@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Segurança</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .message {
+            font-size: 1.5em;
+            color: #ff0000;
+            display: none;
+        }
+        .loading {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading">Carregando, por favor aguarde...</div>
+    <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
+
+    <script>
+        // Mostra mensagem de carregamento
+        setTimeout(function() {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("message").style.display = "block";
+        }, 5000); // Tempo de carregamento de 5 segundos
+    </script>
+</body>
+</html>
