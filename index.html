@@ -37,12 +37,20 @@
             border-radius: 5px;
             overflow: hidden;
             margin-top: 10px;
+            position: relative;
         }
         .progress-bar-fill {
             height: 10px;
             background-color: #4caf50;
             width: 0;
-            transition: width 5s linear;
+            transition: width 0.1s;
+        }
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            top: -25px;
+            font-size: 1em;
+            color: #ffffff;
         }
         .message {
             font-size: 1.8em;
@@ -57,6 +65,7 @@
             border-radius: 8px;
             margin-top: 10px;
             text-align: left;
+            display: none; /* Ocultar inicialmente */
         }
     </style>
 </head>
@@ -64,6 +73,7 @@
     <div class="container">
         <div id="loading" class="loading">Carregando, por favor aguarde...</div>
         <div class="progress-bar">
+            <div id="progress-text" class="progress-text">0%</div>
             <div id="progress-fill" class="progress-bar-fill"></div>
         </div>
         <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
@@ -101,20 +111,32 @@
                     ${dicasAleatorias.map(dica => `<li>${dica}</li>`).join('')}
                 </ul>
             `;
+            infoDiv.style.display = "block"; // Exibe as dicas de segurança
         }
 
-        // Temporizador para exibir a mensagem de vulnerabilidade
-        setTimeout(function() {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("message").style.display = "block";
-            exibirDicas();
-        }, 5000); // 5 segundos
+        function exibirVulnerabilidade() {
+            let vulnDiv = document.getElementById("vulnerability-data");
+            vulnDiv.style.display = "block"; // Exibe os dados de vulnerabilidade
+        }
 
-        // Animação da barra de progresso
+        // Animação da barra de progresso e contagem de porcentagem
         const progressFill = document.getElementById("progress-fill");
-        setTimeout(() => {
-            progressFill.style.width = "100%";
-        }, 100); // Inicia a animação imediatamente
+        const progressText = document.getElementById("progress-text");
+        let progress = 0;
+
+        const progressInterval = setInterval(() => {
+            progress += 2; // Incrementa a porcentagem
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `${progress}%`;
+
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                exibirDicas();
+                exibirVulnerabilidade();
+            }
+        }, 100); // Atualiza a cada 0.1 segundo para completar em 5 segundos
     </script>
 </body>
 </html>
