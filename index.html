@@ -83,6 +83,22 @@
             color: #000000;
             display: none;
         }
+        .map-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .map-image {
+            width: 200px;
+            height: auto;
+        }
+        .robbery-number {
+            font-size: 1.5em;
+            color: #ff4c4c;
+            margin-top: 10px;
+            font-weight: bold;
+        }
         @keyframes slowBlink {
             0%, 50%, 100% {
                 opacity: 1;
@@ -133,10 +149,23 @@
                 <li>9% das pessoas protegem o celular contra furtos</li>
             </ul>
         </div>
+        <div class="map-container">
+            <img src="caminho/para/sua/imagem.png" alt="Mapa de São Paulo" class="map-image">
+            <div id="robbery-number" class="robbery-number"></div>
+        </div>
         <div class="author-signature">By Junior Silva</div>
     </div>
 
     <script>
+        // Números aleatórios de roubos
+        const roubos = [50000, 16000, 29000, 12000, 32000];
+
+        // Seleciona um número aleatório de roubos e exibe
+        function atualizarRoubos() {
+            const numeroDeRoubos = roubos[Math.floor(Math.random() * roubos.length)];
+            document.getElementById("robbery-number").textContent = `${numeroDeRoubos} roubos por dia`;
+        }
+
         // Dados fictícios para as dicas de segurança
         const dicas = [
             "Ative o bloqueio de tela por senha ou biometria.",
@@ -191,6 +220,7 @@
                 exibirDicas();
                 exibirVulnerabilidade();
                 exibirSeloSeguranca();
+                atualizarRoubos();
             }
         }, 100);
     </script>
