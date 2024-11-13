@@ -68,13 +68,28 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+        .message .attention {
+            display: block;
+            font-size: 1.2em;
+            color: #ff4c4c;
+        }
         .security-badge {
             font-size: 1em;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #ffd700; /* Cor amarela */
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 20px;
             display: none;
+            animation: blink 1s infinite; /* Animação de piscar */
+            color: #000000; /* Texto preto */
+        }
+        @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0;
+            }
         }
         .info, .vulnerability-data {
             font-size: 1em;
@@ -84,6 +99,12 @@
             margin-top: 10px;
             text-align: left;
             display: none; /* Ocultar inicialmente */
+        }
+        .author-signature {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #ffffff;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -96,7 +117,10 @@
                 <div id="progress-text" class="progress-text">0%</div>
             </div>
         </div>
-        <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
+        <div id="message" class="message">
+            <span class="attention">Atenção:</span>
+            Seu celular está vulnerável!
+        </div>
         <div id="security-badge" class="security-badge">
             Site Seguro e Confiável
         </div>
@@ -109,6 +133,7 @@
                 <li>9% das pessoas protegem o celular contra furtos</li>
             </ul>
         </div>
+        <div class="author-signature">By Junior Silva</div>
     </div>
 
     <script>
