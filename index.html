@@ -5,35 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança</title>
     <style>
+        /* Fundo gradiente e centralização */
         body {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: #ffffff;
             text-align: center;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
-        .message {
-            font-size: 1.5em;
-            color: #ff0000;
-            display: none;
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
         .loading {
-            font-size: 1.2em;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 1.8em;
+            color: #ff4c4c;
+            display: none;
+            margin-bottom: 20px;
+        }
+        .info {
+            font-size: 1em;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <div id="loading" class="loading">Carregando, por favor aguarde...</div>
-    <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
+    <div class="container">
+        <div id="loading" class="loading">Carregando, por favor aguarde...</div>
+        <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
+        <div id="info" class="info"></div>
+    </div>
 
     <script>
-        // Mostra mensagem de carregamento
+        // Dados fictícios para serem exibidos aleatoriamente
+        const dicas = [
+            "Ative o bloqueio de tela por senha ou biometria.",
+            "Evite conexões Wi-Fi públicas sem proteção.",
+            "Use um aplicativo de segurança para detectar ameaças.",
+            "Mantenha seu sistema operacional atualizado.",
+            "Desative permissões de aplicativos desnecessárias.",
+            "Faça backup regular dos seus dados.",
+            "Instale apps somente de fontes confiáveis.",
+            "Use autenticação de dois fatores sempre que possível.",
+            "Desative o Bluetooth quando não estiver em uso.",
+            "Cuidado com links suspeitos e phishing."
+        ];
+
+        function exibirDicas() {
+            let infoDiv = document.getElementById("info");
+            let dicasAleatorias = dicas.sort(() => 0.5 - Math.random()).slice(0, 3);
+            infoDiv.innerHTML = `
+                <h3>Dicas para melhorar a segurança:</h3>
+                <ul>
+                    ${dicasAleatorias.map(dica => `<li>${dica}</li>`).join('')}
+                </ul>
+            `;
+        }
+
+        // Temporizador para exibir a mensagem de vulnerabilidade
         setTimeout(function() {
             document.getElementById("loading").style.display = "none";
             document.getElementById("message").style.display = "block";
-        }, 5000); // Tempo de carregamento de 5 segundos
+            exibirDicas();
+        }, 5000); // 5 segundos
     </script>
 </body>
 </html>
