@@ -55,9 +55,10 @@
         .progress-text {
             position: absolute;
             width: 100%;
-            top: -25px;
-            font-size: 1em;
+            top: 0;
+            font-size: 0.9em;
             color: #ffffff;
+            line-height: 10px;
         }
         .message {
             font-size: 1.8em;
@@ -87,15 +88,16 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-title">Analisando Vulnerabilidade do celular...</div>
+        <div id="header-title" class="header-title">Analisando Vulnerabilidade do celular...</div>
         <div id="loading" class="loading">Carregando, por favor aguarde...</div>
         <div class="progress-bar">
-            <div id="progress-text" class="progress-text">0%</div>
-            <div id="progress-fill" class="progress-bar-fill"></div>
+            <div id="progress-fill" class="progress-bar-fill">
+                <div id="progress-text" class="progress-text">0%</div>
+            </div>
         </div>
         <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
         <div id="security-badge" class="security-badge">
-            <img src="/mnt/data/gsb-3-300x126.png" alt="Selo de Segurança" style="max-width: 100%; height: auto;">
+            Site Seguro e Confiável
         </div>
         <div id="info" class="info"></div>
         <div id="vulnerability-data" class="vulnerability-data">
@@ -103,6 +105,7 @@
             <ul>
                 <li>95% dos brasileiros têm seus dados roubados.</li>
                 <li>79% já tiveram seu aparelho roubado.</li>
+                <li>9% das pessoas protegem o celular contra furtos</li>
             </ul>
         </div>
     </div>
@@ -147,6 +150,7 @@
         // Animação da barra de progresso e contagem de porcentagem
         const progressFill = document.getElementById("progress-fill");
         const progressText = document.getElementById("progress-text");
+        const headerTitle = document.getElementById("header-title");
         let progress = 0;
 
         const progressInterval = setInterval(() => {
@@ -157,6 +161,7 @@
             if (progress >= 100) {
                 clearInterval(progressInterval);
                 document.getElementById("loading").style.display = "none";
+                headerTitle.style.display = "none"; // Oculta o título após o carregamento
                 document.getElementById("message").style.display = "block";
                 exibirDicas();
                 exibirVulnerabilidade();
