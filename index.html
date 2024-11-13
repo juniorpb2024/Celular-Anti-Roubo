@@ -27,9 +27,16 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .loading {
+        .header-title {
             font-size: 1.5em;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .loading {
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
         .progress-bar {
             width: 100%;
@@ -56,7 +63,16 @@
             font-size: 1.8em;
             color: #ff4c4c;
             display: none;
+            margin-top: 20px;
             margin-bottom: 20px;
+        }
+        .security-badge {
+            font-size: 1em;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
         }
         .info, .vulnerability-data {
             font-size: 1em;
@@ -71,18 +87,25 @@
 </head>
 <body>
     <div class="container">
+        <div class="header-title">Analisando Vulnerabilidade do celular...</div>
         <div id="loading" class="loading">Carregando, por favor aguarde...</div>
         <div class="progress-bar">
             <div id="progress-text" class="progress-text">0%</div>
             <div id="progress-fill" class="progress-bar-fill"></div>
         </div>
         <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
+        <div id="security-badge" class="security-badge">
+            <img src="https://via.placeholder.com/30" alt="Selo de Segurança" style="vertical-align: middle;">
+            <span>Verificado por Sistema de Segurança</span>
+        </div>
         <div id="info" class="info"></div>
         <div id="vulnerability-data" class="vulnerability-data">
             <h3>Dados sobre vulnerabilidade:</h3>
             <ul>
                 <li>95% dos brasileiros têm seus dados roubados.</li>
                 <li>79% já tiveram seu aparelho roubado.</li>
+                <li>68% das crianças já viram conteúdo impróprio.</li>
+                <li>7% das pessoas PROTEJEM seu celular.</li>
             </ul>
         </div>
     </div>
@@ -119,6 +142,11 @@
             vulnDiv.style.display = "block"; // Exibe os dados de vulnerabilidade
         }
 
+        function exibirSeloSeguranca() {
+            let badgeDiv = document.getElementById("security-badge");
+            badgeDiv.style.display = "block"; // Exibe o selo de segurança
+        }
+
         // Animação da barra de progresso e contagem de porcentagem
         const progressFill = document.getElementById("progress-fill");
         const progressText = document.getElementById("progress-text");
@@ -135,6 +163,7 @@
                 document.getElementById("message").style.display = "block";
                 exibirDicas();
                 exibirVulnerabilidade();
+                exibirSeloSeguranca();
             }
         }, 100); // Atualiza a cada 0.1 segundo para completar em 5 segundos
     </script>
