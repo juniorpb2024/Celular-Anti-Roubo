@@ -67,11 +67,7 @@
             display: none;
             margin-top: 20px;
             margin-bottom: 20px;
-        }
-        .message .attention {
-            display: block;
-            font-size: 1.2em;
-            color: #ff4c4c;
+            animation: slowBlink 2s infinite; /* Pisca lentamente */
         }
         .security-badge {
             font-size: 1em;
@@ -79,11 +75,9 @@
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 20px;
-            display: none;
-            animation: blink 1s infinite; /* Animação de piscar */
             color: #000000; /* Texto preto */
         }
-        @keyframes blink {
+        @keyframes slowBlink {
             0%, 50%, 100% {
                 opacity: 1;
             }
@@ -118,8 +112,7 @@
             </div>
         </div>
         <div id="message" class="message">
-            <span class="attention">Atenção:</span>
-            Seu celular está vulnerável!
+            Atenção: Seu celular está vulnerável!
         </div>
         <div id="security-badge" class="security-badge">
             Site Seguro e Confiável
