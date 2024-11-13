@@ -68,7 +68,13 @@
         </div>
         <div id="message" class="message">Atenção: Seu celular está vulnerável!</div>
         <div id="info" class="info"></div>
-        <div id="vulnerability-data" class="vulnerability-data"></div>
+        <div id="vulnerability-data" class="vulnerability-data">
+            <h3>Dados sobre vulnerabilidade:</h3>
+            <ul>
+                <li>95% dos brasileiros têm seus dados roubados.</li>
+                <li>79% já tiveram seu aparelho roubado.</li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -86,15 +92,6 @@
             "Cuidado com links suspeitos e phishing."
         ];
 
-        // Dados fictícios sobre vulnerabilidade
-        const vulnerabilidade = [
-            "95% dos brasileiros têm seus dados roubados.",
-            "79% já tiveram seu aparelho roubado.",
-            "68% dos usuários não possuem proteção antivírus.",
-            "85% das senhas são fracas e fáceis de descobrir.",
-            "92% não atualizam seus sistemas regularmente."
-        ];
-
         function exibirDicas() {
             let infoDiv = document.getElementById("info");
             let dicasAleatorias = dicas.sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -106,23 +103,11 @@
             `;
         }
 
-        function exibirVulnerabilidade() {
-            let vulnDiv = document.getElementById("vulnerability-data");
-            let vulnerabilidadesAleatorias = vulnerabilidade.sort(() => 0.5 - Math.random()).slice(0, 2);
-            vulnDiv.innerHTML = `
-                <h3>Dados sobre vulnerabilidade:</h3>
-                <ul>
-                    ${vulnerabilidadesAleatorias.map(v => `<li>${v}</li>`).join('')}
-                </ul>
-            `;
-        }
-
         // Temporizador para exibir a mensagem de vulnerabilidade
         setTimeout(function() {
             document.getElementById("loading").style.display = "none";
             document.getElementById("message").style.display = "block";
             exibirDicas();
-            exibirVulnerabilidade();
         }, 5000); // 5 segundos
 
         // Animação da barra de progresso
