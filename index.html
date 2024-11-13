@@ -45,10 +45,10 @@
             overflow: hidden;
             margin-top: 10px;
             position: relative;
-            height: 20px; /* Aumenta a altura da barra */
+            height: 20px;
         }
         .progress-bar-fill {
-            height: 100%; /* Ajuste para ocupar toda a altura da barra */
+            height: 100%;
             background-color: #4caf50;
             width: 0;
             transition: width 0.1s;
@@ -59,7 +59,7 @@
             top: 0;
             font-size: 0.9em;
             color: #ffffff;
-            line-height: 20px; /* Alinha o texto ao centro verticalmente */
+            line-height: 20px;
         }
         .message {
             font-size: 1.8em;
@@ -67,16 +67,21 @@
             display: none;
             margin-top: 20px;
             margin-bottom: 20px;
-            animation: slowBlink 2s infinite; /* Pisca lentamente */
+            animation: slowBlink 2s infinite;
+        }
+        .message .attention {
+            font-size: 0.8em;
+            font-weight: bold;
+            display: block;
         }
         .security-badge {
             font-size: 1em;
-            background-color: #ffd700; /* Cor amarela */
+            background-color: #ffd700;
             padding: 10px;
             border-radius: 8px;
             margin-bottom: 20px;
-            color: #000000; /* Texto preto */
-            display: none; /* Oculto inicialmente */
+            color: #000000;
+            display: none;
         }
         @keyframes slowBlink {
             0%, 50%, 100% {
@@ -93,7 +98,7 @@
             border-radius: 8px;
             margin-top: 10px;
             text-align: left;
-            display: none; /* Ocultar inicialmente */
+            display: none;
         }
         .author-signature {
             margin-top: 15px;
@@ -113,7 +118,8 @@
             </div>
         </div>
         <div id="message" class="message">
-            Atenção: Seu celular está vulnerável!
+            <span class="attention">Atenção:</span>
+            Seu celular está vulnerável!
         </div>
         <div id="security-badge" class="security-badge">
             Site Seguro e Confiável
@@ -154,40 +160,39 @@
                     ${dicasAleatorias.map(dica => `<li>${dica}</li>`).join('')}
                 </ul>
             `;
-            infoDiv.style.display = "block"; // Exibe as dicas de segurança
+            infoDiv.style.display = "block";
         }
 
         function exibirVulnerabilidade() {
             let vulnDiv = document.getElementById("vulnerability-data");
-            vulnDiv.style.display = "block"; // Exibe os dados de vulnerabilidade
+            vulnDiv.style.display = "block";
         }
 
         function exibirSeloSeguranca() {
             let badgeDiv = document.getElementById("security-badge");
-            badgeDiv.style.display = "block"; // Exibe o selo de segurança
+            badgeDiv.style.display = "block";
         }
 
-        // Animação da barra de progresso e contagem de porcentagem
         const progressFill = document.getElementById("progress-fill");
         const progressText = document.getElementById("progress-text");
         const headerTitle = document.getElementById("header-title");
         let progress = 0;
 
         const progressInterval = setInterval(() => {
-            progress += 2; // Incrementa a porcentagem
+            progress += 2;
             progressFill.style.width = `${progress}%`;
             progressText.textContent = `${progress}%`;
 
             if (progress >= 100) {
                 clearInterval(progressInterval);
                 document.getElementById("loading").style.display = "none";
-                headerTitle.style.display = "none"; // Oculta o título após o carregamento
+                headerTitle.style.display = "none";
                 document.getElementById("message").style.display = "block";
                 exibirDicas();
                 exibirVulnerabilidade();
                 exibirSeloSeguranca();
             }
-        }, 100); // Atualiza a cada 0.1 segundo para completar em 5 segundos
+        }, 100);
     </script>
 </body>
 </html>
