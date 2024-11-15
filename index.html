@@ -24,7 +24,7 @@
             text-align: center;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .question-header, .header-title {
+        .question-header {
             background-color: rgba(255, 255, 255, 0.1);
             padding: 10px;
             border-radius: 8px;
@@ -35,7 +35,11 @@
             text-align: left;
             margin-bottom: 20px;
         }
-        .answers button, .button {
+        .answers {
+            margin-top: 15px;
+            text-align: left;
+        }
+        .answers button {
             display: block;
             margin: 10px 0;
             padding: 10px 20px;
@@ -45,53 +49,24 @@
             font-size: 1em;
             cursor: pointer;
             border-radius: 5px;
+            text-align: left;
             width: 100%;
         }
-        .answers button:hover, .button:hover {
+        .answers button:hover {
             background-color: #45a049;
         }
-        .loading {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        .progress-bar {
-            width: 100%;
-            background-color: #555;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-            position: relative;
-            height: 20px;
-        }
-        .progress-bar-fill {
-            height: 100%;
+        .button {
             background-color: #4caf50;
-            width: 0;
-            transition: width 0.1s;
-        }
-        .progress-text {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            font-size: 0.9em;
-            color: #ffffff;
-            line-height: 20px;
-        }
-        .info, .vulnerability-data {
-            font-size: 1em;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: left;
-            display: none;
-        }
-        .message {
-            font-size: 1.8em;
-            color: #ff4c4c;
-            display: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             margin-top: 20px;
-            animation: slowBlink 2s infinite;
+        }
+        .button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -107,41 +82,38 @@
             <p id="question-text"></p>
             <div class="answers" id="answers"></div>
         </div>
-        <div id="loading" style="display: none;">
-            <div class="header-title">Analisando Vulnerabilidade do celular...</div>
-            <div class="progress-bar">
-                <div id="progress-fill" class="progress-bar-fill">
-                    <div id="progress-text" class="progress-text">0%</div>
-                </div>
-            </div>
-            <p class="loading">Carregando, por favor aguarde...</p>
-        </div>
-        <div id="final" style="display: none;">
-            <div class="message">
-                <span>Atenção:</span> Seu celular está vulnerável!
-            </div>
-            <div id="info" class="info"></div>
-            <div id="vulnerability-data" class="vulnerability-data">
-                <h3>Dados sobre vulnerabilidade:</h3>
-                <ul>
-                    <li>95% dos brasileiros têm seus dados roubados.</li>
-                    <li>79% já tiveram seu aparelho roubado.</li>
-                    <li>9% das pessoas protegem o celular contra furtos</li>
-                </ul>
-            </div>
+        <div id="loading" class="question" style="display: none;">
+            <h2>Carregando...</h2>
+            <p>Por favor, aguarde.</p>
         </div>
     </div>
 
     <script>
         const questions = [
-            { question: "Qual a melhor forma de proteger seu celular?", answers: ["Ativar autenticação biométrica", "Deixar desbloqueado", "Usar senhas fáceis"] },
-            { question: "O que fazer ao usar Wi-Fi público?", answers: ["Evitar acessos sensíveis", "Realizar transações bancárias", "Desativar antivírus"] }
-        ];
-
-        const dicas = [
-            "Ative o bloqueio de tela por senha ou biometria.",
-            "Evite conexões Wi-Fi públicas sem proteção.",
-            "Use um aplicativo de segurança para detectar ameaças."
+            { 
+                question: "Qual a melhor forma de proteger seu celular?",
+                answers: ["Ativar autenticação biométrica", "Deixar desbloqueado", "Usar senhas fáceis como '1234'"]
+            },
+            { 
+                question: "O que fazer ao usar Wi-Fi público?",
+                answers: ["Evitar acessos sensíveis", "Realizar transações bancárias", "Desativar antivírus"]
+            },
+            { 
+                question: "Como evitar roubo de dados?",
+                answers: ["Usar apps confiáveis", "Baixar apps desconhecidos", "Compartilhar senhas com amigos"]
+            },
+            { 
+                question: "Como manter o sistema atualizado?",
+                answers: ["Habilitar atualizações automáticas", "Ignorar mensagens de atualização", "Desinstalar apps desnecessários"]
+            },
+            { 
+                question: "O que fazer ao receber links desconhecidos?",
+                answers: ["Evitar clicar", "Abrir imediatamente", "Compartilhar com amigos"]
+            },
+            { 
+                question: "Como proteger suas redes sociais?",
+                answers: ["Usar autenticação em dois fatores", "Usar a mesma senha em tudo", "Evitar senhas longas"]
+            }
         ];
 
         let currentQuestion = 0;
@@ -154,8 +126,18 @@
 
         function showQuestion() {
             if (currentQuestion < questions.length) {
-                document.getElementById("question-text").textContent = questions[currentQuestion].question;
-                document.getElementById("answers").innerHTML = questions[currentQuestion].answers.map(answer => `<button onclick="nextQuestion()">${answer}</button>`).join('');
+                const questionText = document.getElementById("question-text");
+                const answersDiv = document.getElementById("answers");
+
+                questionText.textContent = questions[currentQuestion].question;
+                answersDiv.innerHTML = "";
+
+                questions[currentQuestion].answers.forEach(answer => {
+                    const button = document.createElement("button");
+                    button.textContent = answer;
+                    button.onclick = () => nextQuestion();
+                    answersDiv.appendChild(button);
+                });
             } else {
                 showLoading();
             }
@@ -169,27 +151,38 @@
         function showLoading() {
             document.getElementById("questionnaire").style.display = "none";
             document.getElementById("loading").style.display = "block";
-
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 20;
-                document.getElementById("progress-fill").style.width = `${progress}%`;
-                document.getElementById("progress-text").textContent = `${progress}%`;
-
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    document.getElementById("loading").style.display = "none";
-                    document.getElementById("final").style.display = "block";
-                    showFinalInfo();
-                }
-            }, 500);
+            setTimeout(() => {
+                document.body.innerHTML += secondFlowHTML;
+            }, 3000);
         }
 
-        function showFinalInfo() {
-            document.getElementById("info").innerHTML = `<h3>Dicas:</h3><ul>${dicas.map(dica => `<li>${dica}</li>`).join('')}</ul>`;
-            document.getElementById("info").style.display = "block";
-            document.getElementById("vulnerability-data").style.display = "block";
-        }
+        const secondFlowHTML = `
+        <div class="container">
+            <div id="header-title" class="header-title">Analisando Vulnerabilidade do celular...</div>
+            <div id="loading" class="loading">Carregando, por favor aguarde...</div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-bar-fill">
+                    <div id="progress-text" class="progress-text">0%</div>
+                </div>
+            </div>
+            <div id="message" class="message">
+                <span class="attention">Atenção:</span>
+                Seu celular está vulnerável!
+            </div>
+            <div id="security-badge" class="security-badge">
+                Site Seguro e Confiável
+            </div>
+            <div id="info" class="info"></div>
+            <div id="vulnerability-data" class="vulnerability-data">
+                <h3>Dados sobre vulnerabilidade:</h3>
+                <ul>
+                    <li>95% dos brasileiros têm seus dados roubados.</li>
+                    <li>79% já tiveram seu aparelho roubado.</li>
+                    <li>9% das pessoas protegem o celular contra furtos</li>
+                </ul>
+            </div>
+            <div class="author-signature">By Junior Silva</div>
+        </div>`;
     </script>
 </body>
 </html>
