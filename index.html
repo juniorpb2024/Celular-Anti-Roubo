@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança</title>
     <style>
-        /* Fundo gradiente e centralização */
+        /* Estilo geral */
         body {
             display: flex;
             align-items: center;
@@ -15,9 +15,6 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #1d2671, #c33764);
             color: #ffffff;
-            text-align: center;
-            padding: 0 20px;
-            box-sizing: border-box;
         }
         .container {
             max-width: 500px;
@@ -25,199 +22,131 @@
             background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
-        .header-title {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 8px;
-        }
-        .loading {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        .progress-bar {
-            width: 100%;
-            background-color: #555;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-            position: relative;
-            height: 20px;
-        }
-        .progress-bar-fill {
-            height: 100%;
+        .button {
             background-color: #4caf50;
-            width: 0;
-            transition: width 0.1s;
-        }
-        .progress-text {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            font-size: 0.9em;
-            color: #ffffff;
-            line-height: 20px;
-        }
-        .message {
-            font-size: 1.8em;
-            color: #ff4c4c;
-            display: none;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            animation: slowBlink 2s infinite;
-        }
-        .message .attention {
-            font-size: 0.8em;
-            font-weight: bold;
-            display: block;
-        }
-        .security-badge {
-            font-size: 1em;
-            background-color: #ffd700;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            color: #000000;
-            display: none;
-        }
-        .map-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             margin-top: 20px;
         }
-        .robbery-number {
-            font-size: 1.5em;
-            color: #ff4c4c;
-            margin-top: 10px;
-            font-weight: bold;
+        .button:hover {
+            background-color: #45a049;
         }
-        @keyframes slowBlink {
-            0%, 50%, 100% {
-                opacity: 1;
-            }
-            25%, 75% {
-                opacity: 0;
-            }
-        }
-        .info, .vulnerability-data {
-            font-size: 1em;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: left;
+        .question {
             display: none;
+            margin-bottom: 20px;
         }
-        .author-signature {
+        .answers {
             margin-top: 15px;
-            font-size: 0.9em;
-            color: #ffffff;
-            opacity: 0.7;
+        }
+        .answers button {
+            display: block;
+            margin: 5px auto;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .answers button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="header-title" class="header-title">Analisando Vulnerabilidade do celular...</div>
-        <div id="loading" class="loading">Carregando, por favor aguarde...</div>
-        <div class="progress-bar">
-            <div id="progress-fill" class="progress-bar-fill">
-                <div id="progress-text" class="progress-text">0%</div>
-            </div>
+        <div id="welcome">
+            <h1>Bem-vindo!</h1>
+            <p>Clique no botão abaixo para iniciar o teste de segurança do celular.</p>
+            <button class="button" onclick="startTest()">Iniciar Teste</button>
         </div>
-        <div id="message" class="message">
-            <span class="attention">Atenção:</span>
-            Seu celular está vulnerável!
+        <div id="questionnaire" class="question">
+            <h2>Perguntas de Segurança</h2>
+            <p id="question-text"></p>
+            <div class="answers" id="answers"></div>
         </div>
-        <div id="security-badge" class="security-badge">
-            Site Seguro e Confiável
+        <div id="loading" class="question">
+            <h2>Carregando...</h2>
+            <p>Por favor, aguarde.</p>
         </div>
-        <div id="info" class="info"></div>
-        <div id="vulnerability-data" class="vulnerability-data">
-            <h3>Dados sobre vulnerabilidade:</h3>
-            <ul>
-                <li>95% dos brasileiros têm seus dados roubados.</li>
-                <li>79% já tiveram seu aparelho roubado.</li>
-                <li>9% das pessoas protegem o celular contra furtos</li>
-            </ul>
-        </div>
-        <div class="map-container">
-            <div id="robbery-number" class="robbery-number"></div>
-        </div>
-        <div class="author-signature">By Junior Silva</div>
     </div>
 
     <script>
-        // Números aleatórios de roubos
-        const roubos = [1.726, 895, 1231, 786, 1165];
-
-        // Seleciona um número aleatório de roubos e exibe
-        function atualizarRoubos() {
-            const numeroDeRoubos = roubos[Math.floor(Math.random() * roubos.length)];
-            document.getElementById("robbery-number").textContent = `${numeroDeRoubos} roubos por dia em São Paulo`;
-        }
-
-        // Dados fictícios para as dicas de segurança
-        const dicas = [
-            "Ative o bloqueio de tela por senha ou biometria.",
-            "Evite conexões Wi-Fi públicas sem proteção.",
-            "Use um aplicativo de segurança para detectar ameaças.",
-            "Mantenha seu sistema operacional atualizado.",
-            "Desative permissões de aplicativos desnecessárias.",
-            "Faça backup regular dos seus dados.",
-            "Instale apps somente de fontes confiáveis.",
-            "Use autenticação de dois fatores sempre que possível.",
-            "Desative o Bluetooth quando não estiver em uso.",
-            "Cuidado com links suspeitos e phishing."
+        const questions = [
+            { 
+                question: "Qual a melhor forma de proteger seu celular?",
+                answers: ["Ativar autenticação biométrica", "Deixar desbloqueado", "Usar senhas fáceis como '1234'"]
+            },
+            { 
+                question: "O que fazer ao usar Wi-Fi público?",
+                answers: ["Evitar acessos sensíveis", "Realizar transações bancárias", "Desativar antivírus"]
+            },
+            { 
+                question: "Como evitar roubo de dados?",
+                answers: ["Usar apps confiáveis", "Baixar apps desconhecidos", "Compartilhar senhas com amigos"]
+            },
+            { 
+                question: "Como manter o sistema atualizado?",
+                answers: ["Habilitar atualizações automáticas", "Ignorar mensagens de atualização", "Desinstalar apps desnecessários"]
+            },
+            { 
+                question: "O que fazer ao receber links desconhecidos?",
+                answers: ["Evitar clicar", "Abrir imediatamente", "Compartilhar com amigos"]
+            },
+            { 
+                question: "Como proteger suas redes sociais?",
+                answers: ["Usar autenticação em dois fatores", "Usar a mesma senha em tudo", "Evitar senhas longas"]
+            }
         ];
 
-        function exibirDicas() {
-            let infoDiv = document.getElementById("info");
-            let dicasAleatorias = dicas.sort(() => 0.5 - Math.random()).slice(0, 3);
-            infoDiv.innerHTML = `
-                <h3>Dicas para melhorar a segurança:</h3>
-                <ul>
-                    ${dicasAleatorias.map(dica => `<li>${dica}</li>`).join('')}
-                </ul>
-            `;
-            infoDiv.style.display = "block";
+        let currentQuestion = 0;
+
+        function startTest() {
+            document.getElementById("welcome").style.display = "none";
+            showQuestion();
         }
 
-        function exibirVulnerabilidade() {
-            let vulnDiv = document.getElementById("vulnerability-data");
-            vulnDiv.style.display = "block";
-        }
-
-        function exibirSeloSeguranca() {
-            let badgeDiv = document.getElementById("security-badge");
-            badgeDiv.style.display = "block";
-        }
-
-        const progressFill = document.getElementById("progress-fill");
-        const progressText = document.getElementById("progress-text");
-        const headerTitle = document.getElementById("header-title");
-        let progress = 0;
-
-        const progressInterval = setInterval(() => {
-            progress += 2;
-            progressFill.style.width = `${progress}%`;
-            progressText.textContent = `${progress}%`;
-
-            if (progress >= 100) {
-                clearInterval(progressInterval);
-                document.getElementById("loading").style.display = "none";
-                headerTitle.style.display = "none";
-                document.getElementById("message").style.display = "block";
-                exibirDicas();
-                exibirVulnerabilidade();
-                exibirSeloSeguranca();
-                atualizarRoubos();
+        function showQuestion() {
+            if (currentQuestion < questions.length) {
+                const questionnaire = document.getElementById("questionnaire");
+                const questionText = document.getElementById("question-text");
+                const answersDiv = document.getElementById("answers");
+                
+                questionnaire.style.display = "block";
+                questionText.textContent = questions[currentQuestion].question;
+                answersDiv.innerHTML = "";
+                
+                questions[currentQuestion].answers.forEach(answer => {
+                    const button = document.createElement("button");
+                    button.textContent = answer;
+                    button.onclick = () => nextQuestion();
+                    answersDiv.appendChild(button);
+                });
+            } else {
+                showLoading();
             }
-        }, 100);
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function showLoading() {
+            document.getElementById("questionnaire").style.display = "none";
+            document.getElementById("loading").style.display = "block";
+            setTimeout(() => {
+                alert("Fluxo atual iniciado!");
+                // Aqui você pode redirecionar para o fluxo existente.
+            }, 3000);
+        }
     </script>
 </body>
 </html>
