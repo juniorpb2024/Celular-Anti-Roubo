@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Segurança</title>
     <style>
-        /* Estilo geral */
         body {
             display: flex;
             align-items: center;
@@ -17,12 +16,44 @@
             color: #ffffff;
         }
         .container {
-            max-width: 500px;
+            max-width: 600px;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .question-header {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .question {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .answers {
+            margin-top: 15px;
+            text-align: left;
+        }
+        .answers button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: left;
+            width: 100%;
+        }
+        .answers button:hover {
+            background-color: #45a049;
         }
         .button {
             background-color: #4caf50;
@@ -37,27 +68,6 @@
         .button:hover {
             background-color: #45a049;
         }
-        .question {
-            display: none;
-            margin-bottom: 20px;
-        }
-        .answers {
-            margin-top: 15px;
-        }
-        .answers button {
-            display: block;
-            margin: 5px auto;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            border: none;
-            color: white;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .answers button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
@@ -67,12 +77,12 @@
             <p>Clique no botão abaixo para iniciar o teste de segurança do celular.</p>
             <button class="button" onclick="startTest()">Iniciar Teste</button>
         </div>
-        <div id="questionnaire" class="question">
-            <h2>Perguntas de Segurança</h2>
+        <div id="questionnaire" class="question" style="display: none;">
+            <div class="question-header">Perguntas de Segurança</div>
             <p id="question-text"></p>
             <div class="answers" id="answers"></div>
         </div>
-        <div id="loading" class="question">
+        <div id="loading" class="question" style="display: none;">
             <h2>Carregando...</h2>
             <p>Por favor, aguarde.</p>
         </div>
@@ -110,19 +120,18 @@
 
         function startTest() {
             document.getElementById("welcome").style.display = "none";
+            document.getElementById("questionnaire").style.display = "block";
             showQuestion();
         }
 
         function showQuestion() {
             if (currentQuestion < questions.length) {
-                const questionnaire = document.getElementById("questionnaire");
                 const questionText = document.getElementById("question-text");
                 const answersDiv = document.getElementById("answers");
-                
-                questionnaire.style.display = "block";
+
                 questionText.textContent = questions[currentQuestion].question;
                 answersDiv.innerHTML = "";
-                
+
                 questions[currentQuestion].answers.forEach(answer => {
                     const button = document.createElement("button");
                     button.textContent = answer;
@@ -144,7 +153,7 @@
             document.getElementById("loading").style.display = "block";
             setTimeout(() => {
                 alert("Fluxo atual iniciado!");
-                // Aqui você pode redirecionar para o fluxo existente.
+                // Aqui você pode redirecionar para o fluxo existente
             }, 3000);
         }
     </script>
