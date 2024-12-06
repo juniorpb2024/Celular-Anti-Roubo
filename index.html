@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Segurança do Celular</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -52,6 +53,10 @@
             background: #6a11cb;
         }
 
+        #chart-container {
+            margin: 20px 0;
+        }
+
         @media (max-width: 600px) {
             body {
                 font-size: 14px;
@@ -81,15 +86,21 @@
 
     <div id="result" style="display:none;">
         <h2>Resultado</h2>
-        <p id="result-message"></p>
+        <div id="chart-container">
+            <canvas id="riskChart"></canvas>
+        </div>
+        <p id="persuasive-message" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></p>
+        <div id="solution" style="margin-top: 20px; background: #fff; color: #000; padding: 20px; border-radius: 10px;">
+            <h3>Solução para sua segurança:</h3>
+            <p>
+                Proteja seu celular agora mesmo! Por apenas <strong>12x de R$ 3,99</strong>, 
+                você terá acesso ao nosso guia completo para configurar seu celular com segurança máxima.
+            </p>
+            <button onclick="buyNow()">Quero me proteger agora!</button>
+        </div>
     </div>
 
     <script>
-        const GITHUB_API_URL = 'https://api.github.com';
-        const REPO_OWNER = 'SEU_USUARIO';
-        const REPO_NAME = 'SEU_REPOSITORIO';
-        const GITHUB_TOKEN = 'SEU_TOKEN_GITHUB';
-
         const questions = [
             "Você utiliza senha ou biometria para desbloquear o celular?",
             "Seu celular está configurado para apagar dados em caso de tentativas de desbloqueio inválidas?",
@@ -102,20 +113,13 @@
         const questionsDiv = document.getElementById('questions');
         const questionContainer = document.getElementById('question-container');
         const resultDiv = document.getElementById('result');
-        const resultMessage = document.getElementById('result-message');
+        const resultMessage = document.getElementById('persuasive-message');
 
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             const cpf = document.getElementById('cpf').value;
             localStorage.setItem('cpf', cpf);
-            const userData = await getUserData(cpf);
-            if (userData) {
-                resultMessage.textContent = 'Você já está protegido!';
-                resultDiv.style.display = 'block';
-                form.style.display = 'none';
-            } else {
-                displayQuestions();
-            }
+            displayQuestions();
         });
 
         function displayQuestions() {
@@ -134,7 +138,7 @@
             document.getElementById('submit-answers').style.display = 'block';
         }
 
-        document.getElementById('submit-answers').addEventListener('click', async () => {
+        document.getElementById('submit-answers').addEventListener('click', () => {
             const answers = [];
             questions.forEach((_, index) => {
                 const answer = document.querySelector(`input[name="question-${index}"]:checked`);
@@ -144,52 +148,50 @@
             });
 
             const unsafe = answers.filter(a => a === 'no').length;
+            generateChart(unsafe);
+
             if (unsafe > 2) {
-                resultMessage.textContent = 'Seu celular está desprotegido. Recomendamos melhorar sua segurança.';
+                resultMessage.textContent = 'Seu celular está em alto risco de ser invadido. É fundamental tomar ações imediatas para se proteger.';
             } else {
-                resultMessage.textContent = 'Parabéns! Seu celular está protegido.';
+                resultMessage.textContent = 'Parabéns! Seu celular está relativamente seguro, mas ainda há pontos que podem ser otimizados.';
             }
-            await saveResult(localStorage.getItem('cpf'), unsafe);
+
             questionsDiv.style.display = 'none';
             resultDiv.style.display = 'block';
         });
 
-        async function saveResult(cpf, unsafeCount) {
-            const fileContent = {
-                cpf,
-                unsafeCount,
-                timestamp: new Date().toISOString()
-            };
-
-            const fileName = `data/${cpf}.json`;
-
-            await fetch(`${GITHUB_API_URL}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${fileName}`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json'
+        function generateChart(unsafe) {
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Seguro', 'Inseguro'],
+                    datasets: [{
+                        data: [5 - unsafe, unsafe],
+                        backgroundColor: ['#4caf50', '#f44336'],
+                    }]
                 },
-                body: JSON.stringify({
-                    message: 'Add user data',
-                    content: btoa(JSON.stringify(fileContent))
-                })
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return `${context.label}: ${context.raw} resposta(s)`;
+                                }
+                            }
+                        }
+                    }
+                }
             });
         }
 
-        async function getUserData(cpf) {
-            const fileName = `data/${cpf}.json`;
-
-            const response = await fetch(`${GITHUB_API_URL}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${fileName}`, {
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                return JSON.parse(atob(data.content));
-            }
-            return null;
+        function buyNow() {
+            alert('Redirecionando para a página de pagamento...');
+            window.location.href = 'https://seuproduto.com.br';
         }
     </script>
 </body>
