@@ -4,12 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Segurança do Celular</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        form, #questions, #result {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        form label, form input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #2575fc;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #6a11cb;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            form, #questions, #result {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Verifique a Segurança do Seu Celular</h1>
+    <header>
+        <h1>Teste a Segurança do Seu Celular</h1>
+    </header>
+
     <form id="security-form">
         <label for="cpf">Digite seu CPF:</label>
-        <input type="text" id="cpf" name="cpf" required>
+        <input type="text" id="cpf" name="cpf" placeholder="123.456.789-00" required>
         <button type="submit">Iniciar Avaliação</button>
     </form>
 
@@ -25,6 +85,11 @@
     </div>
 
     <script>
+        const GITHUB_API_URL = 'https://api.github.com';
+        const REPO_OWNER = 'SEU_USUARIO';
+        const REPO_NAME = 'SEU_REPOSITORIO';
+        const GITHUB_TOKEN = 'SEU_TOKEN_GITHUB';
+
         const questions = [
             "Você utiliza senha ou biometria para desbloquear o celular?",
             "Seu celular está configurado para apagar dados em caso de tentativas de desbloqueio inválidas?",
@@ -39,11 +104,18 @@
         const resultDiv = document.getElementById('result');
         const resultMessage = document.getElementById('result-message');
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const cpf = document.getElementById('cpf').value;
             localStorage.setItem('cpf', cpf);
-            displayQuestions();
+            const userData = await getUserData(cpf);
+            if (userData) {
+                resultMessage.textContent = 'Você já está protegido!';
+                resultDiv.style.display = 'block';
+                form.style.display = 'none';
+            } else {
+                displayQuestions();
+            }
         });
 
         function displayQuestions() {
@@ -62,7 +134,7 @@
             document.getElementById('submit-answers').style.display = 'block';
         }
 
-        document.getElementById('submit-answers').addEventListener('click', () => {
+        document.getElementById('submit-answers').addEventListener('click', async () => {
             const answers = [];
             questions.forEach((_, index) => {
                 const answer = document.querySelector(`input[name="question-${index}"]:checked`);
@@ -77,17 +149,47 @@
             } else {
                 resultMessage.textContent = 'Parabéns! Seu celular está protegido.';
             }
-            saveResult(localStorage.getItem('cpf'), unsafe);
+            await saveResult(localStorage.getItem('cpf'), unsafe);
             questionsDiv.style.display = 'none';
             resultDiv.style.display = 'block';
         });
 
-        function saveResult(cpf, unsafeCount) {
-            fetch('http://localhost:3000/save-result', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ cpf, unsafeCount })
+        async function saveResult(cpf, unsafeCount) {
+            const fileContent = {
+                cpf,
+                unsafeCount,
+                timestamp: new Date().toISOString()
+            };
+
+            const fileName = `data/${cpf}.json`;
+
+            await fetch(`${GITHUB_API_URL}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${fileName}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: 'Add user data',
+                    content: btoa(JSON.stringify(fileContent))
+                })
             });
+        }
+
+        async function getUserData(cpf) {
+            const fileName = `data/${cpf}.json`;
+
+            const response = await fetch(`${GITHUB_API_URL}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${fileName}`, {
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return JSON.parse(atob(data.content));
+            }
+            return null;
         }
     </script>
 </body>
