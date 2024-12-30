@@ -125,26 +125,16 @@
                 if (link) {
                     const range = selection.getRangeAt(0);
                     const anchor = doc.createElement("a");
-                    anchor.setAttribute('href', link); // No quotes in href
+                    anchor.setAttribute("href", link);
                     anchor.appendChild(range.extractContents());
                     range.insertNode(anchor);
-                    htmlInput.value = doc.body.innerHTML;
+
+                    // Remove quotes from href in textarea
+                    const updatedHTML = htmlInput.value.replace(/href="(.*?)"/g, 'href=$1');
+                    htmlInput.value = updatedHTML;
                 }
             }
         });
-
-        // Prevent encoding of special characters in HTML
-        const encodeHTML = (input) => {
-            const div = document.createElement('div');
-            div.innerHTML = input;
-            return div.textContent || div.innerText || "";
-        };
-
-        htmlInput.addEventListener("input", () => {
-            htmlInput.value = encodeHTML(htmlInput.value);
-            renderedOutput.srcdoc = htmlInput.value;
-        });
-
     </script>
 </body>
 </html>
