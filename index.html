@@ -1,169 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEO Code Analyzer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #f4f4f4;
-    }
-
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      color: #00529B;
-    }
-
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #007BFF;
-    }
-
-    .header p {
-      margin: 5px 0;
-      font-size: 16px;
-      color: #555;
-    }
-
-    .toolbar {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .toolbar button {
-      padding: 8px 15px;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 14px;
-      transition: background-color 0.3s;
-    }
-
-    .toolbar button:hover {
-      background-color: #0056b3;
-    }
-
-    .container {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    textarea, div {
-      flex: 1;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: none;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      overflow-y: auto;
-      height: 400px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    textarea {
-      border-right: 1px solid #ccc;
-    }
-
-    div {
-      background-color: #f9f9f9;
-    }
-
-    div.editable {
-      pointer-events: auto;
-      color: #000;
-    }
-
-    a {
-      color: #007BFF;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de HTML SEO PagueMenos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+        }
+        textarea {
+            width: 45%;
+            height: 300px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Analisador de HTML SEO PagueMenos</h1>
-    <p>Desenvolvido por Junior Silva</p>
-  </div>
-  <div class="toolbar">
-    <button onclick="applyBold()">Negrito</button>
-    <button onclick="insertLink()">Inserir Link</button>
-  </div>
-  <div class="container">
-    <textarea id="inputHtml" placeholder="Cole o código HTML aqui..."></textarea>
-    <div id="outputHtml" class="editable" contenteditable="true">Edite aqui após colar o HTML no bloco ao lado...</div>
-  </div>
+    <header>
+        <h1>Analisador de HTML SEO PagueMenos</h1>
+        <p>Desenvolvido por Junior Silva</p>
+    </header>
 
-  <script>
-    function applyBold() {
-      const selection = window.getSelection();
-      if (selection.rangeCount > 0) {
-        const range = selection.getRangeAt(0);
-        const bold = document.createElement('strong');
-        bold.appendChild(range.extractContents());
-        range.insertNode(bold);
-        syncToHtml();
-      }
-    }
+    <div>
+        <button id="boldButton">Negrito</button>
+        <button id="linkButton">Inserir Link</button>
+    </div>
 
-    function insertLink() {
-      const url = prompt("Insira a URL do link:");
-      if (!url) return;
+    <div class="container">
+        <textarea id="htmlInput" placeholder="Cole o código HTML aqui..."></textarea>
+        <textarea id="htmlOutput" placeholder="Edite aqui após colar o HTML no bloco ao lado..."></textarea>
+    </div>
 
-      const selection = window.getSelection();
-      if (selection.rangeCount > 0) {
-        const range = selection.getRangeAt(0);
-        const link = document.createElement('a');
-        link.href = url;
-        link.target = '_blank';
-        link.appendChild(range.extractContents());
-        range.insertNode(link);
-        syncToHtml();
-      }
-    }
+    <script>
+        const htmlInput = document.getElementById("htmlInput");
+        const htmlOutput = document.getElementById("htmlOutput");
+        const boldButton = document.getElementById("boldButton");
+        const linkButton = document.getElementById("linkButton");
 
-    function syncToHtml() {
-      const outputHtml = document.getElementById('outputHtml').innerHTML;
-      document.getElementById('inputHtml').value = outputHtml;
-    }
+        // Sync input and output bidirectionally
+        htmlInput.addEventListener("input", () => {
+            htmlOutput.value = htmlInput.value;
+        });
 
-    document.getElementById('outputHtml').addEventListener('input', syncToHtml);
+        htmlOutput.addEventListener("input", () => {
+            htmlInput.value = htmlOutput.value;
+        });
 
-    document.getElementById('inputHtml').addEventListener('input', () => {
-      const inputHtml = document.getElementById('inputHtml').value;
-      document.getElementById('outputHtml').innerHTML = inputHtml;
-    });
+        // Add bold functionality
+        boldButton.addEventListener("click", () => {
+            const selectedText = htmlOutput.value.substring(htmlOutput.selectionStart, htmlOutput.selectionEnd);
+            if (selectedText) {
+                const boldedText = `<strong>${selectedText}</strong>`;
+                htmlOutput.setRangeText(boldedText, htmlOutput.selectionStart, htmlOutput.selectionEnd, "end");
+                htmlInput.value = htmlOutput.value;
+            }
+        });
 
-    document.getElementById('outputHtml').addEventListener('click', (event) => {
-      if (event.target.tagName === 'A') {
-        event.preventDefault();
-        const newUrl = prompt("Editar URL do link:", event.target.href);
-        if (newUrl) {
-          event.target.href = newUrl;
-        }
-      }
-    });
-  </script>
+        // Add link functionality
+        linkButton.addEventListener("click", () => {
+            const selectedText = htmlOutput.value.substring(htmlOutput.selectionStart, htmlOutput.selectionEnd);
+            if (selectedText) {
+                const link = prompt("Insira o link:");
+                if (link) {
+                    const linkedText = `<a href='${link}' target='_blank'>${selectedText}</a>`;
+                    htmlOutput.setRangeText(linkedText, htmlOutput.selectionStart, htmlOutput.selectionEnd, "end");
+                    htmlInput.value = htmlOutput.value;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
