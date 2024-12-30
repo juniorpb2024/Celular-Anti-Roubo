@@ -10,17 +10,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+    h1 {
       margin: 20px;
+    }
+    .toolbar {
+      margin-bottom: 10px;
+    }
+    .toolbar button {
+      margin-right: 10px;
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .toolbar button:hover {
+      background-color: #0056b3;
     }
     .container {
       display: flex;
       gap: 20px;
       width: 100%;
+      height: 100%;
       max-width: 1200px;
     }
     textarea, div {
-      width: 100%;
-      height: 300px;
+      flex: 1;
+      height: calc(100% - 60px);
       border: 1px solid #ccc;
       padding: 10px;
       box-sizing: border-box;
@@ -29,55 +49,107 @@
     textarea {
       resize: none;
     }
-    button {
-      margin: 20px 0;
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
+    #linkModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 1000;
     }
-    button:hover {
-      background-color: #0056b3;
+    #linkModal input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+    #linkModal button {
+      margin-right: 10px;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
     }
   </style>
 </head>
 <body>
   <h1>SEO Code Analyzer</h1>
+  <div class="toolbar">
+    <button onclick="applyBold()">Negrito</button>
+    <button onclick="openLinkModal()">Inserir Link</button>
+  </div>
   <div class="container">
     <textarea id="inputHtml" placeholder="Digite ou cole o código HTML aqui..."></textarea>
     <div id="outputHtml" contenteditable="true" style="background-color: #f9f9f9;"></div>
   </div>
-  <button onclick="analyzeHtml()">Analisar</button>
+
+  <!-- Link Modal -->
+  <div id="linkModal">
+    <label for="urlInput">URL:</label>
+    <input type="text" id="urlInput" placeholder="Digite a URL aqui">
+    <button onclick="insertLink()">Inserir</button>
+    <button onclick="closeLinkModal()">Cancelar</button>
+  </div>
+  <div id="overlay"></div>
 
   <script>
-    function analyzeHtml() {
-      const inputHtml = document.getElementById('inputHtml').value;
-      const outputHtml = document.getElementById('outputHtml');
-
-      try {
-        // Atualiza o bloco de saída com links clicáveis
-        outputHtml.innerHTML = inputHtml;
-        const links = outputHtml.querySelectorAll('a');
-        links.forEach(link => link.setAttribute('target', '_blank'));
-      } catch (error) {
-        outputHtml.innerHTML = '<p style="color: red;">Erro ao processar o HTML. Verifique o código inserido.</p>';
-      }
+    function applyBold() {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      const boldSpan = document.createElement('b');
+      range.surroundContents(boldSpan);
     }
 
-    // Sincroniza alterações do bloco de saída com o bloco de entrada
+    function openLinkModal() {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      document.getElementById('linkModal').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeLinkModal() {
+      document.getElementById('linkModal').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function insertLink() {
+      const url = document.getElementById('urlInput').value;
+      if (!url) return;
+
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+
+      const range = selection.getRangeAt(0);
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.textContent = selection.toString();
+
+      range.deleteContents();
+      range.insertNode(link);
+
+      closeLinkModal();
+    }
+
     document.getElementById('outputHtml').addEventListener('input', () => {
       const outputHtml = document.getElementById('outputHtml').innerHTML;
       document.getElementById('inputHtml').value = outputHtml;
     });
 
-    // Sincroniza alterações do bloco de entrada com o bloco de saída
     document.getElementById('inputHtml').addEventListener('input', () => {
       const inputHtml = document.getElementById('inputHtml').value;
       const outputHtml = document.getElementById('outputHtml');
       outputHtml.innerHTML = inputHtml;
-      const links = outputHtml.querySelectorAll('a');
-      links.forEach(link => link.setAttribute('target', '_blank'));
     });
   </script>
 </body>
