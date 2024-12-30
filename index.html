@@ -166,6 +166,11 @@
       outputHtml.innerHTML = formatHtml(inputHtml);
       outputHtml.classList.add('editable');
     });
+
+    // Enable the HTML block to allow text input
+    document.getElementById('inputHtml').addEventListener('focus', () => {
+      document.getElementById('inputHtml').style.pointerEvents = 'auto';
+    });
   </script>
 </body>
 </html>
