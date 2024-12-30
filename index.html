@@ -80,6 +80,9 @@
 
     div {
       background-color: #f9f9f9;
+    }
+
+    div:not(.editable) {
       pointer-events: none;
       color: #aaa;
     }
@@ -167,10 +170,8 @@
       outputHtml.classList.add('editable');
     });
 
-    // Enable the HTML block to allow text input
-    document.getElementById('inputHtml').addEventListener('focus', () => {
-      document.getElementById('inputHtml').style.pointerEvents = 'auto';
-    });
+    // Remove restriction for HTML input field
+    document.getElementById('inputHtml').style.pointerEvents = 'auto';
   </script>
 </body>
 </html>
