@@ -80,6 +80,13 @@
 
     div {
       background-color: #f9f9f9;
+      pointer-events: none;
+      color: #aaa;
+    }
+
+    div.editable {
+      pointer-events: auto;
+      color: #000;
     }
 
     a {
@@ -102,12 +109,17 @@
     <button onclick="insertLink()">Inserir Link</button>
   </div>
   <div class="container">
-    <textarea id="inputHtml" placeholder="Cole o texto da descrição aqui..."></textarea>
-    <div id="outputHtml" contenteditable="true">Cole o texto da descrição aqui...</div>
+    <textarea id="inputHtml" placeholder="Cole o código HTML aqui..."></textarea>
+    <div id="outputHtml">Edite aqui após colar o HTML no bloco ao lado...</div>
   </div>
 
   <script>
     function applyBold() {
+      const outputHtml = document.getElementById('outputHtml');
+      if (!outputHtml.classList.contains('editable')) {
+        alert('Por favor, cole o HTML no bloco ao lado antes de editar.');
+        return;
+      }
       const selection = window.getSelection();
       if (selection.rangeCount > 0) {
         const range = selection.getRangeAt(0);
@@ -119,6 +131,11 @@
     }
 
     function insertLink() {
+      const outputHtml = document.getElementById('outputHtml');
+      if (!outputHtml.classList.contains('editable')) {
+        alert('Por favor, cole o HTML no bloco ao lado antes de editar.');
+        return;
+      }
       const url = prompt("Insira a URL do link:");
       if (!url) return;
 
@@ -135,12 +152,7 @@
 
     function formatHtml(html) {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const formatted = doc.body.innerHTML
-        .replace(/(?:\r\n|\r|\n)/g, '')
-        .replace(/<p>/g, '\n<p>')
-        .replace(/<br>/g, '\n<br>')
-        .replace(/<\/p>/g, '</p>\n');
-      return formatted;
+      return doc.body.innerHTML;
     }
 
     function syncToHtml() {
@@ -148,19 +160,12 @@
       document.getElementById('inputHtml').value = formatHtml(outputHtml);
     }
 
-    function syncToText() {
+    document.getElementById('inputHtml').addEventListener('input', () => {
       const inputHtml = document.getElementById('inputHtml').value;
-      document.getElementById('outputHtml').innerHTML = formatTextToHtml(inputHtml);
-    }
-
-    function formatTextToHtml(text) {
-      const paragraphs = text.split('\n').filter(line => line.trim() !== '');
-      return paragraphs.map(line => `<p>${line}</p>`).join('');
-    }
-
-    document.getElementById('outputHtml').addEventListener('input', syncToHtml);
-
-    document.getElementById('inputHtml').addEventListener('input', syncToText);
+      const outputHtml = document.getElementById('outputHtml');
+      outputHtml.innerHTML = formatHtml(inputHtml);
+      outputHtml.classList.add('editable');
+    });
   </script>
 </body>
 </html>
