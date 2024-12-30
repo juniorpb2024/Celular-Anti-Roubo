@@ -25,30 +25,31 @@
 
     .header h1 {
       margin: 0;
-      font-size: 22px;
+      font-size: 24px;
       color: #007BFF;
     }
 
     .header p {
       margin: 5px 0;
-      font-size: 14px;
+      font-size: 16px;
       color: #555;
     }
 
     .toolbar {
-      margin-top: 10px;
+      margin-top: 15px;
       display: flex;
-      gap: 5px;
+      gap: 10px;
     }
 
     .toolbar button {
-      padding: 5px 10px;
+      padding: 8px 15px;
       background-color: #007BFF;
       color: #fff;
       border: none;
       cursor: pointer;
       border-radius: 4px;
-      font-size: 12px;
+      font-size: 14px;
+      transition: background-color 0.3s;
     }
 
     .toolbar button:hover {
@@ -73,6 +74,8 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       overflow-y: auto;
       height: 400px;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     textarea {
@@ -81,11 +84,6 @@
 
     div {
       background-color: #f9f9f9;
-    }
-
-    div:not(.editable) {
-      pointer-events: none;
-      color: #aaa;
     }
 
     div.editable {
@@ -114,7 +112,7 @@
   </div>
   <div class="container">
     <textarea id="inputHtml" placeholder="Cole o código HTML aqui..."></textarea>
-    <div id="outputHtml" class="editable">Edite aqui após colar o HTML no bloco ao lado...</div>
+    <div id="outputHtml" class="editable" contenteditable="true">Edite aqui após colar o HTML no bloco ao lado...</div>
   </div>
 
   <script>
@@ -160,7 +158,10 @@
     document.getElementById('outputHtml').addEventListener('click', (event) => {
       if (event.target.tagName === 'A') {
         event.preventDefault();
-        window.open(event.target.href, '_blank');
+        const newUrl = prompt("Editar URL do link:", event.target.href);
+        if (newUrl) {
+          event.target.href = newUrl;
+        }
       }
     });
   </script>
