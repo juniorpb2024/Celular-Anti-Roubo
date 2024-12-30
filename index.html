@@ -56,12 +56,29 @@
       const outputHtml = document.getElementById('outputHtml');
 
       try {
-        // Define o conteúdo do bloco de saída como o HTML inserido no bloco de entrada
+        // Atualiza o bloco de saída com links clicáveis
         outputHtml.innerHTML = inputHtml;
+        const links = outputHtml.querySelectorAll('a');
+        links.forEach(link => link.setAttribute('target', '_blank'));
       } catch (error) {
         outputHtml.innerHTML = '<p style="color: red;">Erro ao processar o HTML. Verifique o código inserido.</p>';
       }
     }
+
+    // Sincroniza alterações do bloco de saída com o bloco de entrada
+    document.getElementById('outputHtml').addEventListener('input', () => {
+      const outputHtml = document.getElementById('outputHtml').innerHTML;
+      document.getElementById('inputHtml').value = outputHtml;
+    });
+
+    // Sincroniza alterações do bloco de entrada com o bloco de saída
+    document.getElementById('inputHtml').addEventListener('input', () => {
+      const inputHtml = document.getElementById('inputHtml').value;
+      const outputHtml = document.getElementById('outputHtml');
+      outputHtml.innerHTML = inputHtml;
+      const links = outputHtml.querySelectorAll('a');
+      links.forEach(link => link.setAttribute('target', '_blank'));
+    });
   </script>
 </body>
 </html>
