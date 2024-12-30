@@ -30,9 +30,11 @@
             width: 45%;
             height: 300px;
             padding: 10px;
-            font-size: 14px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
             border: 1px solid #ccc;
             border-radius: 5px;
+            resize: both;
         }
         iframe {
             width: 45%;
@@ -40,6 +42,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: white;
+            resize: both;
         }
         button {
             margin: 5px;
@@ -90,6 +93,14 @@
             doc.body.addEventListener("input", () => {
                 htmlInput.value = doc.body.innerHTML;
             });
+
+            // Make links clickable
+            doc.body.addEventListener("click", (event) => {
+                if (event.target.tagName === "A") {
+                    event.preventDefault();
+                    window.open(event.target.href, '_blank');
+                }
+            });
         });
 
         // Add bold functionality
@@ -115,7 +126,6 @@
                     const range = selection.getRangeAt(0);
                     const anchor = doc.createElement("a");
                     anchor.href = link;
-                    anchor.target = "_blank";
                     anchor.appendChild(range.extractContents());
                     range.insertNode(anchor);
                     htmlInput.value = doc.body.innerHTML;
