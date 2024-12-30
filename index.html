@@ -34,6 +34,13 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        iframe {
+            width: 45%;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
         button {
             margin: 5px;
             padding: 10px 20px;
@@ -61,43 +68,57 @@
 
     <div class="container">
         <textarea id="htmlInput" placeholder="Cole o código HTML aqui..."></textarea>
-        <textarea id="htmlOutput" placeholder="Edite aqui após colar o HTML no bloco ao lado..."></textarea>
+        <iframe id="renderedOutput" sandbox="allow-same-origin allow-scripts"></iframe>
     </div>
 
     <script>
         const htmlInput = document.getElementById("htmlInput");
-        const htmlOutput = document.getElementById("htmlOutput");
+        const renderedOutput = document.getElementById("renderedOutput");
         const boldButton = document.getElementById("boldButton");
         const linkButton = document.getElementById("linkButton");
 
-        // Sync input and output bidirectionally
+        // Update rendered output when HTML input changes
         htmlInput.addEventListener("input", () => {
-            htmlOutput.value = htmlInput.value;
+            renderedOutput.srcdoc = htmlInput.value;
         });
 
-        htmlOutput.addEventListener("input", () => {
-            htmlInput.value = htmlOutput.value;
+        // Sync HTML back to input when rendered output is edited (if editable)
+        renderedOutput.addEventListener("load", () => {
+            const doc = renderedOutput.contentDocument || renderedOutput.contentWindow.document;
+            doc.body.contentEditable = true;
+
+            doc.body.addEventListener("input", () => {
+                htmlInput.value = doc.body.innerHTML;
+            });
         });
 
         // Add bold functionality
         boldButton.addEventListener("click", () => {
-            const selectedText = htmlOutput.value.substring(htmlOutput.selectionStart, htmlOutput.selectionEnd);
-            if (selectedText) {
-                const boldedText = `<strong>${selectedText}</strong>`;
-                htmlOutput.setRangeText(boldedText, htmlOutput.selectionStart, htmlOutput.selectionEnd, "end");
-                htmlInput.value = htmlOutput.value;
+            const doc = renderedOutput.contentDocument || renderedOutput.contentWindow.document;
+            const selection = doc.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                const strong = doc.createElement("strong");
+                strong.appendChild(range.extractContents());
+                range.insertNode(strong);
+                htmlInput.value = doc.body.innerHTML;
             }
         });
 
         // Add link functionality
         linkButton.addEventListener("click", () => {
-            const selectedText = htmlOutput.value.substring(htmlOutput.selectionStart, htmlOutput.selectionEnd);
-            if (selectedText) {
+            const doc = renderedOutput.contentDocument || renderedOutput.contentWindow.document;
+            const selection = doc.getSelection();
+            if (selection.rangeCount > 0) {
                 const link = prompt("Insira o link:");
                 if (link) {
-                    const linkedText = `<a href='${link}' target='_blank'>${selectedText}</a>`;
-                    htmlOutput.setRangeText(linkedText, htmlOutput.selectionStart, htmlOutput.selectionEnd, "end");
-                    htmlInput.value = htmlOutput.value;
+                    const range = selection.getRangeAt(0);
+                    const anchor = doc.createElement("a");
+                    anchor.href = link;
+                    anchor.target = "_blank";
+                    anchor.appendChild(range.extractContents());
+                    range.insertNode(anchor);
+                    htmlInput.value = doc.body.innerHTML;
                 }
             }
         });
