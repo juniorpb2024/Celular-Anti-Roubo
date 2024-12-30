@@ -103,7 +103,7 @@
   </div>
   <div class="container">
     <textarea id="inputHtml" placeholder="Digite ou cole o texto HTML aqui..."></textarea>
-    <div id="outputHtml" contenteditable="true" placeholder="Digite ou cole o texto aqui..."></div>
+    <div id="outputHtml" contenteditable="true">Digite ou cole o texto aqui...</div>
   </div>
 
   <script>
@@ -127,7 +127,6 @@
         const range = selection.getRangeAt(0);
         const link = document.createElement('a');
         link.href = url;
-        link.target = '_blank';
         link.appendChild(range.extractContents());
         range.insertNode(link);
         syncToHtml();
@@ -136,7 +135,10 @@
 
     function formatHtml(html) {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      return doc.body.innerHTML;
+      const formatted = doc.body.innerHTML
+        .replace(/<p>/g, '\n<p>')
+        .replace(/<br>/g, '\n<br>');
+      return formatted;
     }
 
     function syncToHtml() {
