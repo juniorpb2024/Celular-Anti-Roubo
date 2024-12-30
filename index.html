@@ -26,6 +26,7 @@
     .header h1 {
       margin: 0;
       font-size: 22px;
+      color: #007BFF;
     }
 
     .header p {
@@ -113,16 +114,11 @@
   </div>
   <div class="container">
     <textarea id="inputHtml" placeholder="Cole o código HTML aqui..."></textarea>
-    <div id="outputHtml">Edite aqui após colar o HTML no bloco ao lado...</div>
+    <div id="outputHtml" class="editable">Edite aqui após colar o HTML no bloco ao lado...</div>
   </div>
 
   <script>
     function applyBold() {
-      const outputHtml = document.getElementById('outputHtml');
-      if (!outputHtml.classList.contains('editable')) {
-        alert('Por favor, cole o HTML no bloco ao lado antes de editar.');
-        return;
-      }
       const selection = window.getSelection();
       if (selection.rangeCount > 0) {
         const range = selection.getRangeAt(0);
@@ -134,11 +130,6 @@
     }
 
     function insertLink() {
-      const outputHtml = document.getElementById('outputHtml');
-      if (!outputHtml.classList.contains('editable')) {
-        alert('Por favor, cole o HTML no bloco ao lado antes de editar.');
-        return;
-      }
       const url = prompt("Insira a URL do link:");
       if (!url) return;
 
@@ -147,31 +138,31 @@
         const range = selection.getRangeAt(0);
         const link = document.createElement('a');
         link.href = url;
+        link.target = '_blank';
         link.appendChild(range.extractContents());
         range.insertNode(link);
         syncToHtml();
       }
     }
 
-    function formatHtml(html) {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      return doc.body.innerHTML;
-    }
-
     function syncToHtml() {
       const outputHtml = document.getElementById('outputHtml').innerHTML;
-      document.getElementById('inputHtml').value = formatHtml(outputHtml);
+      document.getElementById('inputHtml').value = outputHtml;
     }
+
+    document.getElementById('outputHtml').addEventListener('input', syncToHtml);
 
     document.getElementById('inputHtml').addEventListener('input', () => {
       const inputHtml = document.getElementById('inputHtml').value;
-      const outputHtml = document.getElementById('outputHtml');
-      outputHtml.innerHTML = formatHtml(inputHtml);
-      outputHtml.classList.add('editable');
+      document.getElementById('outputHtml').innerHTML = inputHtml;
     });
 
-    // Remove restriction for HTML input field
-    document.getElementById('inputHtml').style.pointerEvents = 'auto';
+    document.getElementById('outputHtml').addEventListener('click', (event) => {
+      if (event.target.tagName === 'A') {
+        event.preventDefault();
+        window.open(event.target.href, '_blank');
+      }
+    });
   </script>
 </body>
 </html>
