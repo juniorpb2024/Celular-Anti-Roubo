@@ -95,7 +95,7 @@
             <textarea id="htmlInput" placeholder="Cole o código HTML aqui..."></textarea>
         </div>
         <div class="block">
-            <button onclick="copyText()">Copiar Texto</button>
+            <button onclick="copyRenderedHTML()">Copiar Texto</button>
             <iframe id="renderedOutput" sandbox="allow-same-origin allow-scripts"></iframe>
         </div>
     </div>
@@ -168,16 +168,16 @@
             alert('Código HTML copiado para a área de transferência!');
         }
 
-        // Function to copy rendered text content
-        function copyText() {
+        // Function to copy rendered HTML with all elements
+        function copyRenderedHTML() {
             const doc = renderedOutput.contentDocument || renderedOutput.contentWindow.document;
             const tempInput = document.createElement('textarea');
-            tempInput.value = doc.body.innerText;
+            tempInput.value = doc.body.innerHTML;
             document.body.appendChild(tempInput);
             tempInput.select();
             document.execCommand('copy');
             document.body.removeChild(tempInput);
-            alert('Texto renderizado copiado para a área de transferência!');
+            alert('Texto renderizado com elementos copiado para a área de transferência!');
         }
     </script>
 </body>
