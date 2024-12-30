@@ -1,198 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segurança do Celular</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #fff;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        form, #questions, #result {
-            max-width: 600px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        form label, form input, button {
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background: #2575fc;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background: #6a11cb;
-        }
-
-        #chart-container {
-            margin: 20px 0;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                font-size: 14px;
-            }
-            form, #questions, #result {
-                padding: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Code Analyzer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    textarea, div {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+    textarea {
+      resize: none;
+    }
+    button {
+      margin: 20px 0;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Teste a Segurança do Seu Celular</h1>
-    </header>
+  <h1>SEO Code Analyzer</h1>
+  <div class="container">
+    <textarea id="inputHtml" placeholder="Digite ou cole o código HTML aqui..."></textarea>
+    <div id="outputHtml" contenteditable="true" style="background-color: #f9f9f9;"></div>
+  </div>
+  <button onclick="analyzeHtml()">Analisar</button>
 
-    <form id="security-form">
-        <label for="cpf">Digite seu CPF:</label>
-        <input type="text" id="cpf" name="cpf" placeholder="123.456.789-00" required>
-        <button type="submit">Iniciar Avaliação</button>
-    </form>
+  <script>
+    function analyzeHtml() {
+      const inputHtml = document.getElementById('inputHtml').value;
+      const outputHtml = document.getElementById('outputHtml');
 
-    <div id="questions" style="display:none;">
-        <h2>Responda às perguntas abaixo:</h2>
-        <div id="question-container"></div>
-        <button id="submit-answers" style="display:none;">Finalizar</button>
-    </div>
-
-    <div id="result" style="display:none;">
-        <h2>Resultado</h2>
-        <div id="chart-container">
-            <canvas id="riskChart"></canvas>
-        </div>
-        <p id="persuasive-message" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></p>
-        <div id="solution" style="margin-top: 20px; background: #fff; color: #000; padding: 20px; border-radius: 10px;">
-            <h3>Solução para sua segurança:</h3>
-            <p>
-                Proteja seu celular agora mesmo! Por apenas <strong>12x de R$ 3,99</strong>, 
-                você terá acesso ao nosso guia completo para configurar seu celular com segurança máxima.
-            </p>
-            <button onclick="buyNow()">Quero me proteger agora!</button>
-        </div>
-    </div>
-
-    <script>
-        const questions = [
-            "Você utiliza senha ou biometria para desbloquear o celular?",
-            "Seu celular está configurado para apagar dados em caso de tentativas de desbloqueio inválidas?",
-            "Você realiza backups regulares dos seus dados?",
-            "Seu celular possui um antivírus instalado?",
-            "Seu sistema operacional está atualizado?"
-        ];
-
-        const form = document.getElementById('security-form');
-        const questionsDiv = document.getElementById('questions');
-        const questionContainer = document.getElementById('question-container');
-        const resultDiv = document.getElementById('result');
-        const resultMessage = document.getElementById('persuasive-message');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const cpf = document.getElementById('cpf').value;
-            localStorage.setItem('cpf', cpf);
-            displayQuestions();
-        });
-
-        function displayQuestions() {
-            form.style.display = 'none';
-            questionsDiv.style.display = 'block';
-            questions.forEach((q, index) => {
-                const questionHTML = `
-                    <div>
-                        <p>${q}</p>
-                        <input type="radio" name="question-${index}" value="yes" required> Sim
-                        <input type="radio" name="question-${index}" value="no"> Não
-                    </div>
-                `;
-                questionContainer.innerHTML += questionHTML;
-            });
-            document.getElementById('submit-answers').style.display = 'block';
-        }
-
-        document.getElementById('submit-answers').addEventListener('click', () => {
-            const answers = [];
-            questions.forEach((_, index) => {
-                const answer = document.querySelector(`input[name="question-${index}"]:checked`);
-                if (answer) {
-                    answers.push(answer.value);
-                }
-            });
-
-            const unsafe = answers.filter(a => a === 'no').length;
-            generateChart(unsafe);
-
-            if (unsafe > 2) {
-                resultMessage.textContent = 'Seu celular está em alto risco de ser invadido. É fundamental tomar ações imediatas para se proteger.';
-            } else {
-                resultMessage.textContent = 'Parabéns! Seu celular está relativamente seguro, mas ainda há pontos que podem ser otimizados.';
-            }
-
-            questionsDiv.style.display = 'none';
-            resultDiv.style.display = 'block';
-        });
-
-        function generateChart(unsafe) {
-            const ctx = document.getElementById('riskChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Seguro', 'Inseguro'],
-                    datasets: [{
-                        data: [5 - unsafe, unsafe],
-                        backgroundColor: ['#4caf50', '#f44336'],
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function (context) {
-                                    return `${context.label}: ${context.raw} resposta(s)`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        function buyNow() {
-            alert('Redirecionando para a página de pagamento...');
-            window.location.href = 'https://seuproduto.com.br';
-        }
-    </script>
+      try {
+        // Define o conteúdo do bloco de saída como o HTML inserido no bloco de entrada
+        outputHtml.innerHTML = inputHtml;
+      } catch (error) {
+        outputHtml.innerHTML = '<p style="color: red;">Erro ao processar o HTML. Verifique o código inserido.</p>';
+      }
+    }
+  </script>
 </body>
 </html>
