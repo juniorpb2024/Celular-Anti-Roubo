@@ -102,8 +102,8 @@
     <button onclick="insertLink()">Inserir Link</button>
   </div>
   <div class="container">
-    <textarea id="inputHtml" placeholder="Digite ou cole o texto HTML aqui..."></textarea>
-    <div id="outputHtml" contenteditable="true">Digite ou cole o texto aqui...</div>
+    <textarea id="inputHtml" placeholder="Cole o texto da descrição aqui..."></textarea>
+    <div id="outputHtml" contenteditable="true">Cole o texto da descrição aqui...</div>
   </div>
 
   <script>
@@ -136,8 +136,10 @@
     function formatHtml(html) {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const formatted = doc.body.innerHTML
+        .replace(/(?:\r\n|\r|\n)/g, '')
         .replace(/<p>/g, '\n<p>')
-        .replace(/<br>/g, '\n<br>');
+        .replace(/<br>/g, '\n<br>')
+        .replace(/<\/p>/g, '</p>\n');
       return formatted;
     }
 
@@ -146,19 +148,19 @@
       document.getElementById('inputHtml').value = formatHtml(outputHtml);
     }
 
+    function syncToText() {
+      const inputHtml = document.getElementById('inputHtml').value;
+      document.getElementById('outputHtml').innerHTML = formatTextToHtml(inputHtml);
+    }
+
+    function formatTextToHtml(text) {
+      const paragraphs = text.split('\n').filter(line => line.trim() !== '');
+      return paragraphs.map(line => `<p>${line}</p>`).join('');
+    }
+
     document.getElementById('outputHtml').addEventListener('input', syncToHtml);
 
-    document.getElementById('inputHtml').addEventListener('input', () => {
-      const inputHtml = document.getElementById('inputHtml').value;
-      document.getElementById('outputHtml').innerHTML = formatHtml(inputHtml);
-    });
-
-    document.getElementById('outputHtml').addEventListener('click', (event) => {
-      if (event.target.tagName === 'A') {
-        event.preventDefault();
-        window.open(event.target.href, '_blank');
-      }
-    });
+    document.getElementById('inputHtml').addEventListener('input', syncToText);
   </script>
 </body>
 </html>
