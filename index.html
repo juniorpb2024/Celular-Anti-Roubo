@@ -7,150 +7,118 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
       height: 100vh;
     }
-    h1 {
-      margin: 10px;
-    }
-    .toolbar {
-      margin-bottom: 10px;
+
+    .header {
       display: flex;
-      gap: 5px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+      border-bottom: 1px solid #ccc;
     }
+
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+    }
+
     .toolbar button {
       padding: 5px 10px;
       background-color: #007BFF;
-      color: white;
+      color: #fff;
       border: none;
       cursor: pointer;
+      border-radius: 4px;
       font-size: 14px;
     }
+
     .toolbar button:hover {
       background-color: #0056b3;
     }
+
     .container {
       display: flex;
-      gap: 20px;
-      width: 100%;
-      height: calc(100% - 100px);
-      max-width: 1200px;
+      flex: 1;
+      overflow: hidden;
     }
+
     textarea, div {
       flex: 1;
-      height: 100%;
-      border: 1px solid #ccc;
-      padding: 10px;
-      box-sizing: border-box;
-      overflow: auto;
-    }
-    textarea {
-      resize: none;
-    }
-    #linkModal {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border: 1px solid #ccc;
       padding: 15px;
-      z-index: 1000;
-    }
-    #linkModal input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 5px;
-      border: 1px solid #ccc;
-    }
-    #linkModal button {
-      margin-right: 10px;
-    }
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      border: none;
+      resize: none;
+      overflow-y: auto;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
     }
+
+    textarea {
+      border-right: 1px solid #ccc;
+    }
+
+    div {
+      background-color: #f9f9f9;
+    }
+
     a {
       color: blue;
       text-decoration: underline;
     }
+
     a:hover {
       color: darkblue;
     }
   </style>
 </head>
 <body>
-  <h1>SEO Code Analyzer</h1>
-  <div class="toolbar">
-    <button onclick="applyBold()">Negrito</button>
-    <button onclick="openLinkModal()">Inserir Link</button>
+  <div class="header">
+    <h1>SEO Code Analyzer</h1>
+    <div class="toolbar">
+      <button onclick="applyBold()">Negrito</button>
+      <button onclick="insertLink()">Inserir Link</button>
+    </div>
   </div>
   <div class="container">
     <textarea id="inputHtml" placeholder="Digite ou cole o código HTML aqui..."></textarea>
-    <div id="outputHtml" contenteditable="true" style="background-color: #f9f9f9;"></div>
+    <div id="outputHtml" contenteditable="true"></div>
   </div>
-
-  <!-- Link Modal -->
-  <div id="linkModal">
-    <label for="urlInput">URL:</label>
-    <input type="text" id="urlInput" placeholder="Digite a URL aqui">
-    <button onclick="insertLink()">Inserir</button>
-    <button onclick="closeLinkModal()">Cancelar</button>
-  </div>
-  <div id="overlay"></div>
 
   <script>
     function applyBold() {
       const selection = window.getSelection();
-      if (!selection.rangeCount) return;
-      const range = selection.getRangeAt(0);
-      const boldSpan = document.createElement('b');
-      range.surroundContents(boldSpan);
-
-      syncToHtml();
-    }
-
-    function openLinkModal() {
-      const selection = window.getSelection();
-      if (!selection.rangeCount) return;
-      document.getElementById('linkModal').style.display = 'block';
-      document.getElementById('overlay').style.display = 'block';
-    }
-
-    function closeLinkModal() {
-      document.getElementById('linkModal').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
+      if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const bold = document.createElement('b');
+        bold.appendChild(range.extractContents());
+        range.insertNode(bold);
+        syncToHtml();
+      }
     }
 
     function insertLink() {
-      const url = document.getElementById('urlInput').value;
+      const url = prompt("Insira a URL do link:");
       if (!url) return;
 
       const selection = window.getSelection();
-      if (!selection.rangeCount) return;
-
-      const range = selection.getRangeAt(0);
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.textContent = selection.toString();
-
-      range.deleteContents();
-      range.insertNode(link);
-
-      closeLinkModal();
-      syncToHtml();
+      if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.appendChild(range.extractContents());
+        range.insertNode(link);
+        syncToHtml();
+      }
     }
 
     function syncToHtml() {
@@ -162,8 +130,7 @@
 
     document.getElementById('inputHtml').addEventListener('input', () => {
       const inputHtml = document.getElementById('inputHtml').value;
-      const outputHtml = document.getElementById('outputHtml');
-      outputHtml.innerHTML = inputHtml;
+      document.getElementById('outputHtml').innerHTML = inputHtml;
     });
 
     document.getElementById('outputHtml').addEventListener('click', (event) => {
