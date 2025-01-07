@@ -31,8 +31,9 @@ body {
   max-width: 600px;
   border: 2px solid #fff;
   border-radius: 10px;
-  margin: 20px 0;
+  margin: 20px auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: block;
 }
 
 /* Loader */
@@ -41,6 +42,7 @@ body {
 }
 
 .loader {
+  text-align: center;
   margin-top: 20px;
 }
 
@@ -56,10 +58,18 @@ body {
 }
 
 #progress-text {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 10px 0;
+  text-align: center;
 }
 
+#aguarde-text {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Warnings */
 .warnings {
   display: flex;
   flex-direction: column;
@@ -80,6 +90,10 @@ body {
   animation: blink 1s infinite;
 }
 
+.warning-red h3 {
+  margin: 0;
+}
+
 .warning-green {
   background-color: #4caf50;
 }
@@ -91,8 +105,8 @@ body {
 }
 
 .modern-box {
-  text-align: left;
-  background: #f0f0f0;
+  text-align: center;
+  background: rgba(255, 0, 0, 0.2);
   color: #333;
   padding: 15px 20px;
   margin: 10px auto;
