@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       quadro1.classList.remove("active");
       quadro2.classList.add("active");
     }
-  }, 80);
+  }, 60);
 
   const randomPeople = Math.floor(Math.random() * (199 - 67 + 1)) + 67;
   peopleOnline.textContent = randomPeople;
