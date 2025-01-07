@@ -48,34 +48,13 @@ body {
 
 .circle-loader {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 20px;
-}
-
-.circle-bg {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top: 10px solid #00ff00;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.circle-progress {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: conic-gradient(
-    #00ff00 0deg,
-    #00ff00 var(--progress-angle, 0deg),
-    transparent var(--progress-angle, 0deg)
-  );
-  position: absolute;
-  top: 0;
-  left: 0;
-  clip-path: inset(10%); /* Ajusta a espessura */
+  animation: spin 2s linear infinite;
 }
 
 #progress-text {
@@ -125,8 +104,10 @@ body {
   margin-top: 20px;
 }
 
+/* Ajuste para cores das caixas */
 .negative-points {
-  background: rgba(255, 0, 0, 0.15);
+  text-align: center;
+  background: rgba(255, 0, 0, 0.15); /* Vermelho fraco */
   color: #333;
   padding: 15px 20px;
   margin: 10px auto;
@@ -137,7 +118,8 @@ body {
 }
 
 .future-problems {
-  background: #fff;
+  text-align: left;
+  background: #fff; /* Branco */
   color: #333;
   padding: 15px 20px;
   margin: 10px auto;
@@ -145,6 +127,20 @@ body {
   max-width: 400px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste para alinhamento do texto dos bullet points */
+.negative-points ul,
+.future-problems ul {
+  list-style: disc;
+  margin-left: 20px;
+  padding: 0;
+}
+
+.negative-points li,
+.future-problems li {
+  text-align: left; /* Alinha os textos dos bullets à esquerda */
+  margin: 5px 0;
 }
 
 button {
@@ -157,10 +153,21 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  animation: blink 1s infinite;
 }
 
 button:hover {
   background-color: #00cc00;
+}
+
+/* Animações */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes blink {
@@ -173,4 +180,9 @@ button:hover {
   100% {
     opacity: 1;
   }
+}
+
+/* Fundo */
+body {
+  background: linear-gradient(to bottom, #0054a6, #0098db);
 }
