@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0044cc, #002266);
+  background: linear-gradient(to bottom, #0066ff, #0044cc);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
 }
@@ -25,15 +25,19 @@ body {
   display: flex;
 }
 
-/* Quadro 1 */
-#quadro1 {
-  text-align: center;
+/* Banner */
+.banner img.responsive-banner {
+  width: 90%;
+  max-width: 600px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.banner img {
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
+/* Loader */
+.loader.hidden, .warnings.hidden {
+  display: none;
 }
 
 .loader {
@@ -58,42 +62,44 @@ body {
 
 .warnings {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 20px;
+}
+
+.warning-red, .warning-green {
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .warning-red {
   background-color: #ff4d4d;
-  padding: 10px;
-  font-weight: bold;
   animation: blink 1s infinite;
 }
 
 .warning-green {
   background-color: #4caf50;
-  padding: 10px;
-  font-weight: bold;
 }
 
 /* Quadro 2 */
 #quadro2 {
   text-align: center;
+  margin-top: 20px;
 }
 
-.negative-points {
-  background-color: rgba(255, 0, 0, 0.2);
-  padding: 10px;
+.modern-box {
+  text-align: left;
+  background: #f0f0f0;
+  color: #333;
+  padding: 15px 20px;
   margin: 10px auto;
   width: 90%;
   max-width: 400px;
-  border-radius: 5px;
-}
-
-.future-problems {
-  margin: 10px auto;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -104,7 +110,7 @@ button {
   color: #fff;
   background-color: #00ff00;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   animation: blink 1s infinite;
 }
@@ -137,5 +143,5 @@ button:hover {
 
 /* Fundo */
 body {
-  background: linear-gradient(to bottom, #0066ff, #0044cc);
+  background: linear-gradient(to bottom, #0066ff, #003399);
 }
