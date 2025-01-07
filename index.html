@@ -7,11 +7,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Tela de carregamento -->
   <div id="loader">
+    <div class="box-title">
+      <h1>Verificação em Andamento...</h1>
+    </div>
     <div class="circle"></div>
-    <p>Carregando... <span id="progress">0%</span></p>
+    <p class="progress-text">
+      <span id="progress">0%</span>
+    </p>
+    <p class="wait-text">Aguarde...</p>
   </div>
 
+  <!-- Tela de análise -->
   <div id="analysis" class="hidden">
     <h1>Status da Análise</h1>
     <p><strong>Resultado:</strong> Positivo</p>
