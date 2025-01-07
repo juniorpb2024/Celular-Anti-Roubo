@@ -5,8 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let progressValue = 0;
 
+  // Incremento gradual da porcentagem
   const interval = setInterval(() => {
-    progressValue += 10;
+    progressValue += Math.floor(Math.random() * 20) + 10; // Incremento aleatório (10 a 20%)
+    if (progressValue > 100) progressValue = 100;
+
     progress.textContent = `${progressValue}%`;
 
     if (progressValue === 100) {
@@ -14,5 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
       loader.classList.add("hidden");
       analysis.classList.remove("hidden");
     }
-  }, 500); // 500ms for each step, total 5 seconds
+  }, 500); // Atualiza a cada 500ms (total ~5s)
 });
