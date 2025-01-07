@@ -116,7 +116,11 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
+#quadro2 .negative-points h2,
+#quadro2 .negative-points h3 {
+  margin: 0;
+  color: #333;
+  }
 .future-problems {
   text-align: left;
   background: #fff; /* Branco */
@@ -149,7 +153,7 @@ button {
   font-size: 1rem;
   font-weight: bold;
   color: #fff;
-  background-color: #00ff00;
+  background-color: #008000;
   border: none;
   border-radius: 10px;
   cursor: pointer;
