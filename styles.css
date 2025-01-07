@@ -39,18 +39,22 @@ body {
   margin: 0 auto 20px auto;
 }
 
-.circle-progress {
-  position: absolute;
-  height: 100%;
-  background: #00ff00;
-  width: 0%;
-  transition: width 0.1s ease-in-out;
+.progress-bar-container {
+  width: 80%;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-#progress-text {
-  font-size: 2rem;
-  margin: 10px 0;
-  text-align: center;
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: #00ff00;
+  transition: width 0.1s linear;
+  border-radius: 15px;
 }
 
 .negative-points, .future-problems {
