@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const fixNowButton = document.getElementById("fix-now");
   const loader = document.querySelector(".loader");
   const warnings = document.querySelector(".warnings");
+  const warningRed = document.querySelector(".warning-red");
   const peopleOnline = document.getElementById("people-online");
 
   // Variáveis
@@ -17,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       warnings.classList.remove("hidden");
     }, 1000);
+    setTimeout(() => {
+      warningRed.classList.remove("hidden");
+    }, 4000);
   }, 1000);
 
   // Animação do progresso
