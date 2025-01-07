@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Análise de Segurança</title>
+  <title>Verificação</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Tela de carregamento -->
+  <!-- Página de Carregamento -->
   <div id="loader">
     <div class="box-title">
       <h1>Verificação em Andamento...</h1>
@@ -19,15 +19,45 @@
     <p class="wait-text">Aguarde...</p>
   </div>
 
-  <!-- Tela de análise -->
-  <div id="analysis" class="hidden">
-    <h1>Status da Análise</h1>
-    <p><strong>Resultado:</strong> Positivo</p>
-    <ul>
-      <li>Navegação segura</li>
-      <li>Chip sem proteção</li>
-    </ul>
-    <button>Obter Ajuda</button>
+  <!-- Página de Verificação -->
+  <div id="verification" class="hidden">
+    <h1>Consultar CPF</h1>
+    <p>A forma mais simples e rápida de consultar um CPF de alguém!</p>
+    <div class="form-box">
+      <label for="cpf">Informe o CPF da pessoa que você deseja verificar</label>
+      <input type="text" id="cpf" placeholder="Ex: 320.344.630-80" />
+      <button id="consultar-btn">Consultar</button>
+      <div id="verified">
+        <img src="https://via.placeholder.com/100" alt="Verificado">
+        <p>Verificado por ReclameAqui</p>
+      </div>
+    </div>
+
+    <!-- FAQs -->
+    <div class="faqs">
+      <h2>Dúvidas Frequentes</h2>
+      <div class="faq">
+        <h3 class="faq-question">Como é feito o pagamento?</h3>
+        <p class="faq-answer hidden">Resposta da pergunta 1.</p>
+      </div>
+      <div class="faq">
+        <h3 class="faq-question">Quais informações posso obter ao consultar um CPF?</h3>
+        <p class="faq-answer hidden">Resposta da pergunta 2.</p>
+      </div>
+      <div class="faq">
+        <h3 class="faq-question">É seguro consultar o CPF de alguém no seu site?</h3>
+        <p class="faq-answer hidden">Resposta da pergunta 3.</p>
+      </div>
+      <div class="faq">
+        <h3 class="faq-question">Outra pergunta que você quiser colocar</h3>
+        <p class="faq-answer hidden">Resposta da pergunta 4.</p>
+      </div>
+    </div>
+
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/00000000000" class="whatsapp" target="_blank">
+      <img src="https://via.placeholder.com/50" alt="WhatsApp">
+    </a>
   </div>
 
   <script src="script.js"></script>
