@@ -1,37 +1,109 @@
-/* Estilo global */
+/* Geral */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  color: #333;
+  background: linear-gradient(to bottom, #1b2735, #090a0f);
+  color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Quadro 1 */
+#quadro1 {
   text-align: center;
+  width: 100%;
+  padding: 20px;
 }
 
-/* Loader (carregamento) */
-#loader {
-  text-align: center;
+.banner img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
 }
 
-.hidden {
-  display: none;
+.loader {
+  margin-top: 20px;
 }
 
-/* Círculo de carregamento */
-.circle {
+.circle-loader {
+  position: relative;
   width: 100px;
   height: 100px;
-  border: 10px solid rgba(0, 0, 0, 0.2);
-  border-top: 10px solid #00bfa5;
+  margin: 0 auto 20px auto;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top: 10px solid #00ff00;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
+  animation: spin 2s linear infinite;
 }
 
+#progress-text {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.warnings {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.warning-red {
+  background-color: #ff4d4d;
+  padding: 10px;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+.warning-green {
+  background-color: #4caf50;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* Quadro 2 */
+#quadro2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.negative-points {
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.future-problems {
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #00ff00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: blink 1s infinite;
+}
+
+button:hover {
+  background-color: #00cc00;
+}
+
+/* Animações */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -41,91 +113,14 @@ body {
   }
 }
 
-.progress-text {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.wait-text {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-/* Página de Verificação */
-#verification h1 {
-  color: #00264d;
-  margin-bottom: 10px;
-}
-
-#verification .form-box {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-#verification input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-#verification button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#verified {
-  margin-top: 10px;
-}
-
-#verified img {
-  width: 50px;
-}
-
-/* FAQs */
-.faqs {
-  margin-top: 20px;
-}
-
-.faq {
-  margin-bottom: 10px;
-}
-
-.faq-question {
-  background: #007bff;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.faq-answer {
-  background: #f4f4f9;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  display: none;
-}
-
-/* Botão do WhatsApp */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.whatsapp img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
