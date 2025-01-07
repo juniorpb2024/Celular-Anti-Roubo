@@ -4,11 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const quadro2 = document.getElementById("quadro2");
   const progressText = document.getElementById("progress-text");
   const fixNowButton = document.getElementById("fix-now");
+  const loader = document.querySelector(".loader");
+  const warnings = document.querySelector(".warnings");
+  const peopleOnline = document.getElementById("people-online");
 
   // Variáveis
   let progress = 0;
 
-  // Loader Animation
+  // Exibir loader e avisos com atraso
+  setTimeout(() => {
+    loader.classList.remove("hidden");
+    setTimeout(() => {
+      warnings.classList.remove("hidden");
+    }, 1000);
+  }, 1000);
+
+  // Animação do progresso
   const interval = setInterval(() => {
     progress += 1;
     progressText.textContent = `${progress}%`;
@@ -18,13 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
       quadro1.classList.remove("active");
       quadro2.classList.add("active");
     }
-  }, 80); // Total de 8 segundos
+  }, 80); // Total 8 segundos
 
-  // Redirecionamento do botão
+  // Número de pessoas online aleatório
+  const randomPeople = Math.floor(Math.random() * (199 - 67 + 1)) + 67;
+  peopleOnline.textContent = randomPeople;
+
+  // Botão de redirecionamento
   fixNowButton.addEventListener("click", () => {
     window.location.href = "https://www.paguemenos.com.br";
   });
-
-  // Inicializar primeira página
-  quadro1.classList.add("active");
 });
