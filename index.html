@@ -3,61 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verificação</title>
+  <title>Análise de Segurança</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Página de Carregamento -->
-  <div id="loader">
-    <div class="box-title">
-      <h1>Verificação em Andamento...</h1>
+  <!-- Quadro 1 -->
+  <div id="quadro1">
+    <div class="banner">
+      <!-- Espaço para imagem -->
+      <img src="IMAGEM_BANNER_AQUI" alt="Banner de Segurança">
     </div>
-    <div class="circle"></div>
-    <p class="progress-text">
-      <span id="progress">0%</span>
-    </p>
-    <p class="wait-text">Aguarde...</p>
+    <div class="loader">
+      <h2>Verificação em Andamento...</h2>
+      <div class="circle-loader">
+        <div class="circle-progress"></div>
+      </div>
+      <p id="progress-text">66%</p>
+      <p>Aguarde...</p>
+    </div>
+    <div class="warnings">
+      <div class="warning-red">ATENÇÃO: AMEAÇA ENCONTRADA</div>
+      <div class="warning-green">87 PESSOAS ESTÃO NO SITE AGORA!</div>
+    </div>
   </div>
 
-  <!-- Página de Verificação -->
-  <div id="verification" class="hidden">
-    <h1>Consultar CPF</h1>
-    <p>A forma mais simples e rápida de consultar um CPF de alguém!</p>
-    <div class="form-box">
-      <label for="cpf">Informe o CPF da pessoa que você deseja verificar</label>
-      <input type="text" id="cpf" placeholder="Ex: 320.344.630-80" />
-      <button id="consultar-btn">Consultar</button>
-      <div id="verified">
-        <img src="https://via.placeholder.com/100" alt="Verificado">
-        <p>Verificado por ReclameAqui</p>
-      </div>
+  <!-- Quadro 2 -->
+  <div id="quadro2">
+    <h1>Resultado da Verificação</h1>
+    <div class="negative-points">
+      <h2>Atenção</h2>
+      <h3>Pontos Negativos</h3>
+      <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+      </ul>
     </div>
-
-    <!-- FAQs -->
-    <div class="faqs">
-      <h2>Dúvidas Frequentes</h2>
-      <div class="faq">
-        <h3 class="faq-question">Como é feito o pagamento?</h3>
-        <p class="faq-answer hidden">Resposta da pergunta 1.</p>
-      </div>
-      <div class="faq">
-        <h3 class="faq-question">Quais informações posso obter ao consultar um CPF?</h3>
-        <p class="faq-answer hidden">Resposta da pergunta 2.</p>
-      </div>
-      <div class="faq">
-        <h3 class="faq-question">É seguro consultar o CPF de alguém no seu site?</h3>
-        <p class="faq-answer hidden">Resposta da pergunta 3.</p>
-      </div>
-      <div class="faq">
-        <h3 class="faq-question">Outra pergunta que você quiser colocar</h3>
-        <p class="faq-answer hidden">Resposta da pergunta 4.</p>
-      </div>
+    <div class="future-problems">
+      <h3>Problemas que você terá se não corrigir</h3>
+      <ul>
+        <li>d</li>
+        <li>e</li>
+        <li>f</li>
+        <li>g</li>
+      </ul>
     </div>
-
-    <!-- Botão do WhatsApp -->
-    <a href="https://wa.me/00000000000" class="whatsapp" target="_blank">
-      <img src="https://via.placeholder.com/50" alt="WhatsApp">
-    </a>
+    <button id="fix-now">QUERO CORRIGIR AGORA!</button>
   </div>
 
   <script src="script.js"></script>
