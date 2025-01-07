@@ -8,12 +8,12 @@
 </head>
 <body>
   <!-- Quadro 1 -->
-  <div id="quadro1" class="page">
+  <div id="quadro1" class="page active">
     <div class="banner">
       <!-- Espaço para imagem -->
-      <img src="https://github.com/user-attachments/assets/3269b8c7-19a2-4c57-b17f-e237b22ad7d4" alt="Banner de Segurança">
+      <img src="IMAGEM_BANNER_AQUI" alt="Banner de Segurança" class="responsive-banner">
     </div>
-    <div class="loader">
+    <div class="loader hidden">
       <h2>Verificação em Andamento...</h2>
       <div class="circle-loader">
         <div class="circle-progress"></div>
@@ -21,16 +21,18 @@
       <p id="progress-text">0%</p>
       <p>Aguarde...</p>
     </div>
-    <div class="warnings">
+    <div class="warnings hidden">
       <div class="warning-red">ATENÇÃO: AMEAÇA ENCONTRADA</div>
-      <div class="warning-green">87 PESSOAS ESTÃO NO SITE AGORA!</div>
+      <div class="warning-green">
+        <span id="people-online">87</span> PESSOAS ESTÃO NO SITE AGORA!
+      </div>
     </div>
   </div>
 
   <!-- Quadro 2 -->
   <div id="quadro2" class="page hidden">
     <h1>Resultado da Verificação</h1>
-    <div class="negative-points">
+    <div class="negative-points modern-box">
       <h2>Atenção</h2>
       <h3>Pontos Negativos</h3>
       <ul>
@@ -39,7 +41,7 @@
         <li>c</li>
       </ul>
     </div>
-    <div class="future-problems">
+    <div class="future-problems modern-box">
       <h3>Problemas que você terá se não corrigir</h3>
       <ul>
         <li>d</li>
