@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ofertas</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise de Segurança</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Section 1 -->
-        <div class="offer" style="background-color: #ff9300;">
-            <img src="images/protetores.png" alt="Protetores" class="offer-img">
-            <h2>PROTETORES SOLAR</h2>
-            <p>até <strong>40% OFF</strong></p>
-            <a href="https://seusite.com/protetores" class="button">CONFIRA</a>
-        </div>
-        
-        <!-- Section 2 -->
-        <div class="offer" style="background-color: #1e3fa8;">
-            <img src="images/dorflex.png" alt="Dorflex" class="offer-img">
-            <h2>DORFLEX</h2>
-            <p>POR <strong>R$17,99</strong></p>
-            <a href="https://seusite.com/dorflex" class="button">CONFIRA</a>
-        </div>
+  <div id="loader">
+    <div class="circle"></div>
+    <p>Carregando... <span id="progress">0%</span></p>
+  </div>
 
-        <!-- Section 3 -->
-        <div class="offer" style="background-color: #00a89f;">
-            <img src="images/cuidado.png" alt="Cuidado Adulto" class="offer-img">
-            <h2>CUIDADO ADULTO</h2>
-            <p>até <strong>30% OFF</strong> na 2ª unidade</p>
-            <a href="https://seusite.com/cuidado" class="button">CONFIRA</a>
-        </div>
+  <div id="analysis" class="hidden">
+    <h1>Status da Análise</h1>
+    <p><strong>Resultado:</strong> Positivo</p>
+    <ul>
+      <li>Navegação segura</li>
+      <li>Chip sem proteção</li>
+    </ul>
+    <button>Obter Ajuda</button>
+  </div>
 
-        <!-- Section 4 -->
-        <div class="offer" style="background-color: #ffc300;">
-            <img src="images/nutricao.png" alt="Nutrição" class="offer-img">
-            <h2>NUTRIÇÃO</h2>
-            <p>até <strong>30% OFF</strong> na 2ª unidade</p>
-            <a href="https://seusite.com/nutricao" class="button">CONFIRA</a>
-        </div>
-
-        <!-- Section 5 -->
-        <div class="offer" style="background-color: #ff5733;">
-            <img src="images/farmacinha.png" alt="Farmacinha" class="offer-img">
-            <h2>FARMACINHA</h2>
-            <p><strong>LEVE 6 PAGUE 4</strong></p>
-            <a href="https://seusite.com/farmacinha" class="button">CONFIRA</a>
-        </div>
-    </div>
+  <script src="script.js"></script>
 </body>
 </html>
