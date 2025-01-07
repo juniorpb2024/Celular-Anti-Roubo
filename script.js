@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const quadro1 = document.getElementById("quadro1");
   const quadro2 = document.getElementById("quadro2");
   const progressText = document.getElementById("progress-text");
-  const circleProgress = document.querySelector(".circle-progress");
   const fixNowButton = document.getElementById("fix-now");
   const loader = document.querySelector(".loader");
   const warnings = document.querySelector(".warnings");
@@ -25,15 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     progress += 1;
     progressText.textContent = `${progress}%`;
 
-    const angle = (progress / 100) * 360;
-    circleProgress.style.setProperty("--progress-angle", `${angle}deg`);
-
     if (progress === 100) {
       clearInterval(interval);
       quadro1.classList.remove("active");
       quadro2.classList.add("active");
     }
-  }, 50); // Total de 8 segundos
+  }, 80); // Total 8 segundos
 
   // Número de pessoas online aleatório
   const randomPeople = Math.floor(Math.random() * (199 - 67 + 1)) + 67;
