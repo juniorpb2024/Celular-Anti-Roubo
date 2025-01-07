@@ -1,30 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loader = document.getElementById("loader");
-  const verification = document.getElementById("verification");
-  const progress = document.getElementById("progress");
-  const faqQuestions = document.querySelectorAll(".faq-question");
+  // Loader Animation
+  const progressText = document.getElementById("progress-text");
+  const circleProgress = document.querySelector(".circle-progress");
+  let progress = 0;
 
-  let progressValue = 0;
-
-  // Simular carregamento
   const interval = setInterval(() => {
-    progressValue += Math.floor(Math.random() * 20) + 10; // Incremento aleatório
-    if (progressValue > 100) progressValue = 100;
+    progress += 1;
+    progressText.textContent = `${progress}%`;
 
-    progress.textContent = `${progressValue}%`;
-
-    if (progressValue === 100) {
+    if (progress === 100) {
       clearInterval(interval);
-      loader.classList.add("hidden");
-      verification.classList.remove("hidden");
     }
-  }, 500); // 5 segundos total
+  }, 80); // Total 8 seconds
 
-  // Mostrar/ocultar respostas no FAQ
-  faqQuestions.forEach((question) => {
-    question.addEventListener("click", () => {
-      const answer = question.nextElementSibling;
-      answer.classList.toggle("hidden");
-    });
+  // Botão piscante redirecionando
+  const fixNowButton = document.getElementById("fix-now");
+  fixNowButton.addEventListener("click", () => {
+    window.location.href = "https://www.paguemenos.com.br";
   });
 });
