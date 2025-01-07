@@ -3,58 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proteja seus dados e o chip do celular com nossa análise de segurança avançada. Descubra ameaças e solucione problemas agora mesmo.">
   <title>Análise de Segurança</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Quadro 1 -->
-  <div id="quadro1" class="page active">
+  <!-- Quadro 1: Animação e Carregamento -->
+  <section id="quadro1" class="page active">
+    <header class="header">
+      <h1>Proteja Seu Dispositivo</h1>
+      <p>Segurança de dados é essencial. Vamos analisar seu sistema.</p>
+    </header>
+
     <div class="banner">
-      <!-- Espaço para imagem -->
-      <img src="https://github.com/user-attachments/assets/3269b8c7-19a2-4c57-b17f-e237b22ad7d4" alt="Banner de Segurança" class="responsive-banner">
+      <img src="banner.png" alt="Análise de Segurança" class="responsive-banner">
     </div>
+
     <div class="loader hidden">
-      <h2>Verificação em Andamento...</h2>
+      <h2>Verificação em andamento...</h2>
       <div class="circle-loader">
         <div class="circle-progress"></div>
       </div>
       <p id="progress-text">0%</p>
-      <p id="aguarde-text">Aguarde...</p>
     </div>
+
     <div class="warnings hidden">
       <div class="warning-red">
-        <h3>ATENÇÃO</h3>
-        <p>AMEAÇA ENCONTRADA</p>
+        <h3>⚠ ATENÇÃO</h3>
+        <p>Uma ameaça foi encontrada!</p>
       </div>
       <div class="warning-green">
-        <span id="people-online">87</span> PESSOAS ESTÃO NO SITE AGORA!
+        <p><strong><span id="people-online">87</span></strong> pessoas estão analisando agora.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Quadro 2 -->
-  <div id="quadro2" class="page hidden">
-    <h1>Resultado da Verificação</h1>
-    <div class="negative-points modern-box">
-      <h2>Atenção</h2>
-      <h3>Pontos Negativos</h3>
-      <ul>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-      </ul>
+  <!-- Quadro 2: Resultados e Ação -->
+  <section id="quadro2" class="page hidden">
+    <div class="results">
+      <h1>Resultado da Análise</h1>
+
+      <div class="negative-points">
+        <h2>⚠ Pontos Negativos</h2>
+        <ul>
+          <li>Configurações de privacidade fracas</li>
+          <li>Acesso vulnerável ao chip</li>
+          <li>Falta de proteção contra malware</li>
+        </ul>
+      </div>
+
+      <div class="future-problems">
+        <h2>🚨 Problemas Futuros</h2>
+        <ul>
+          <li>Riscos de roubo de identidade</li>
+          <li>Perda de dados críticos</li>
+          <li>Acesso indevido ao seu dispositivo</li>
+        </ul>
+      </div>
+
+      <button id="fix-now" class="cta-button">Corrigir Agora!</button>
     </div>
-    <div class="future-problems modern-box">
-      <h3>Problemas que você terá se não corrigir</h3>
-      <ul>
-        <li>d</li>
-        <li>e</li>
-        <li>f</li>
-        <li>g</li>
-      </ul>
-    </div>
-    <button id="fix-now">QUERO CORRIGIR AGORA!</button>
-  </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
