@@ -1,1 +1,127 @@
+/* Geral */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #0054a6, #0098db);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.page.active {
+  display: flex;
+}
+
+/* Banner */
+.banner img.responsive-banner {
+  width: 90%;
+  max-width: 600px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+/* Loader */
+.loader.hidden, .warnings.hidden {
+  display: none;
+}
+
+.loader {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.circle-loader {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top: 10px solid #00ff00;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+#progress-text {
+  font-size: 2rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+#aguarde-text {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Warnings */
+.warning-red {
+  background-color: #ff4d4d;
+}
+
+.warning-green {
+  background-color: #4caf50;
+}
+
+/* Quadro 2 */
+.negative-points {
+  background: rgba(255, 0, 0, 0.15); /* Vermelho fraco */
+  color: #333;
+  padding: 15px 20px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.future-problems {
+  background: #fff;
+  color: #333;
+  padding: 15px 20px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #00ff00;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00cc00;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
