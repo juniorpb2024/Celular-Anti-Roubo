@@ -107,8 +107,8 @@ body {
 /* Ajuste para cores das caixas */
 .negative-points {
   text-align: center;
-  background: #fff; /* Branco */
-  color: #ffcccc; /* vermelho claro */
+  background: #ffcccc; /* Vermelho Claro */
+  color: #333; /* Branco */
   padding: 15px 20px;
   margin: 10px auto;
   width: 90%;
