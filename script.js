@@ -37,6 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Botão de redirecionamento
   fixNowButton.addEventListener("click", () => {
-    window.location.href = "https://mon.net.br/3id4k8";
+    window.location.href = "https://pay.monetizze.com.br/DPB327285";
   });
 });
