@@ -15,7 +15,7 @@ function renderHome() {
             </div>
         </main>
         <footer class="footer">
-            <p class="terms">Ao clicar em alguma das opções, você concorda com os:</p>
+            <p>Ao clicar em alguma das opções, você concorda com os:</p>
             <a href="#" class="footer-link">Termos de utilização e serviço</a>
         </footer>
     `;
@@ -35,7 +35,7 @@ function renderNoticia() {
             <button class="test-button" onclick="continuar()">Continuar</button>
         </main>
         <footer class="footer">
-            <p class="terms">Ao clicar em alguma das opções, você concorda com os:</p>
+            <p>Ao clicar em alguma das opções, você concorda com os:</p>
             <a href="#" class="footer-link">Termos de utilização e serviço</a>
         </footer>
     `;
@@ -44,9 +44,8 @@ function renderNoticia() {
 // Função para continuar o fluxo
 function continuar() {
     alert("Continuando para a próxima etapa...");
-    window.location.href = "https://seusite.com/proxima-etapa";
+    window.location.href = "https://www.paguemenos.com.br";
 }
 
 // Carrega a página inicial ao abrir o site
 renderHome();
-
