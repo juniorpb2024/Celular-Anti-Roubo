@@ -31,7 +31,7 @@ body {
 }
 
 .header img.banner {
-    width: 100%; /* Banner ajustado para ocupar toda a largura */
+    width: 100%;
     border-radius: 15px;
 }
 
@@ -43,13 +43,13 @@ body {
 }
 
 .main-content h1 {
-    font-size: 2rem; /* Aumentado */
+    font-size: 1.8rem;
     color: #222;
     margin-bottom: 20px;
 }
 
 .main-content p {
-    font-size: 1.1rem; /* Aumentado */
+    font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
@@ -77,43 +77,26 @@ body {
     height: auto;
 }
 
-.footer {
-    margin-top: 30px;
-    text-align: center;
+.model-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
 }
 
-.footer .terms {
-    font-size: 1rem;
+.model-block {
+    text-align: center;
+    cursor: pointer;
+}
+
+.model-block img {
+    width: 100px;
+    height: auto;
     margin-bottom: 10px;
 }
 
-.footer .links {
-    list-style-type: none; /* Remove os bullets */
-    padding: 0; /* Remove o espaçamento interno */
-    margin: 0; /* Remove o espaçamento externo */
-}
-
-.footer .links li {
-    margin: 5px 0;
-}
-
-.footer .links a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.footer .links a:hover {
-    text-decoration: underline;
-}
-
-.image-container {
-    margin: 20px 0;
-    width: 100%; /* Ajusta a largura da imagem ao container */
-}
-
-.image-container img.report-image {
-    width: 100%; /* A imagem ocupa a mesma largura do banner */
-    max-width: 100%; /* Evita que ultrapasse os limites do container */
-    border-radius: 15px; /* Mesma borda arredondada do banner */
+.model-block p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
 }
