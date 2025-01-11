@@ -61,6 +61,13 @@ body {
     background-color: #333;
 }
 
+/* Página Inicial: Remover Bullet Points */
+.footer .links {
+    list-style-type: none; /* Remove os bullets */
+    padding: 0;
+    margin: 0;
+}
+
 /* Página 2: Imagem de Reportagem */
 .image-container {
     margin: 20px 0;
@@ -118,5 +125,12 @@ body {
     color: #333;
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 10px; /* Ajustado para que a seta não sobreponha o texto */
+}
+
+@media (max-width: 480px) {
+    .model-block::after {
+        right: 15px; /* Ajusta melhor em telas menores */
+        bottom: 15px; /* Mais espaço em dispositivos móveis */
+    }
 }
