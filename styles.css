@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 20px; /* Ajustado para mais espaço */
 }
 
 .container {
@@ -43,13 +43,13 @@ body {
 }
 
 .main-content h1 {
-    font-size: 2rem;
+    font-size: 2rem; /* Aumentado */
     color: #222;
     margin-bottom: 20px;
 }
 
 .main-content p {
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* Aumentado */
     margin-bottom: 20px;
 }
 
@@ -58,7 +58,7 @@ body {
     color: #fff;
     border: none;
     padding: 15px 25px;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Aumentado */
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease;
@@ -75,6 +75,36 @@ body {
 .secure-badge img {
     width: 200px;
     height: auto;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.footer .terms {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.footer .links {
+    list-style-type: none; /* Remove os bullets */
+    padding: 0; /* Remove o espaçamento interno */
+    margin: 0; /* Remove o espaçamento externo */
+}
+
+.footer .links li {
+    margin: 5px 0;
+}
+
+.footer .links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer .links a:hover {
+    text-decoration: underline;
 }
 
 .image-container {
