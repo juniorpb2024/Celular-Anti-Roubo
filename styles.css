@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px; /* Ajustado para mais espaço */
+    padding: 20px;
 }
 
 .container {
@@ -43,13 +43,13 @@ body {
 }
 
 .main-content h1 {
-    font-size: 2rem; /* Aumentado */
+    font-size: 2rem;
     color: #222;
     margin-bottom: 20px;
 }
 
 .main-content p {
-    font-size: 1.1rem; /* Aumentado */
+    font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
@@ -58,24 +58,14 @@ body {
     color: #fff;
     border: none;
     padding: 15px 25px;
-    font-size: 1.2rem; /* Aumentado */
+    font-size: 1.2rem;
     cursor: pointer;
     border-radius: 10px;
-    transition: background-color 0.3s ease, opacity 0.6s ease;
-    animation: blink 1.2s infinite;
+    transition: background-color 0.3s ease;
 }
 
 .test-button:hover {
     background-color: #333;
-}
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
 }
 
 .secure-badge {
@@ -83,35 +73,16 @@ body {
 }
 
 .secure-badge img {
-    width: 200px; /* Aumentado o selo */
+    width: 200px;
     height: auto;
 }
 
-.footer {
-    margin-top: 30px;
-    text-align: center;
+.image-container {
+    margin: 20px 0;
 }
 
-.footer .terms {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.footer .links {
-    list-style-type: none;
-    padding: 0;
-}
-
-.footer .links li {
-    margin: 5px 0;
-}
-
-.footer .links a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.footer .links a:hover {
-    text-decoration: underline;
+.image-container img.report-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
 }
