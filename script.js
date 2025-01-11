@@ -1,4 +1,9 @@
 function iniciarTeste() {
-    alert("Teste de segurança iniciado! Em breve, você será redirecionado.");
-    // Substitua pelo redirecionamento ou ação desejada
-    window.location.href = "https://www.paguemenos.com.br";
+    document.getElementById('main-content').classList.add('hidden');
+    document.getElementById('noticia-content').classList.remove('hidden');
+}
+
+function continuarTeste() {
+    alert("Você será redirecionado para o próximo passo.");
+    // Adicione o redirecionamento desejado aqui
+}
