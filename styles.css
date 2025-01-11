@@ -30,7 +30,11 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header img {
+.container.hidden {
+    display: none;
+}
+
+.header img.banner {
     width: 100%;
     border-radius: 15px;
 }
@@ -116,12 +120,8 @@ body {
     text-decoration: underline;
 }
 
-.hidden {
-    display: none;
-}
-
-.news-image {
-    max-width: 100%;
+.noticia-imagem {
+    width: 100%;
     border-radius: 10px;
     margin-bottom: 20px;
 }
