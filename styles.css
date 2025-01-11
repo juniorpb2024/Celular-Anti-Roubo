@@ -45,6 +45,14 @@ body {
     text-align: center;
 }
 
+/* Texto ajustado na Página Inicial */
+.main-content .intro-text {
+    font-size: 1.2rem; /* Aumenta um pouco o tamanho do texto */
+    line-height: 1.8; /* Espaçamento maior entre as linhas */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    color: #444;
+}
+
 /* Botão Geral */
 .test-button {
     background-color: #000;
@@ -125,7 +133,7 @@ body {
     color: #333;
     position: absolute;
     bottom: 20px;
-    right: 10px; /* Ajustado para que a seta não sobreponha o texto */
+    right: 10px;
 }
 
 @media (max-width: 480px) {
