@@ -1,9 +1,9 @@
-function iniciarTeste() {
-    document.getElementById('main-content').classList.add('hidden');
-    document.getElementById('noticia-content').classList.remove('hidden');
+function navegarParaNoticia() {
+    document.getElementById("pagina-inicial").classList.add("hidden");
+    document.getElementById("noticia").classList.remove("hidden");
 }
 
-function continuarTeste() {
-    alert("Você será redirecionado para o próximo passo.");
-    // Adicione o redirecionamento desejado aqui
+function continuar() {
+    alert("Você será redirecionado para a próxima etapa.");
+    window.location.href = "https://www.paguemenos.com.br";
 }
