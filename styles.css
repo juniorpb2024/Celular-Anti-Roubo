@@ -47,7 +47,7 @@ body {
 
 /* Texto ajustado na Página Inicial */
 .main-content .intro-text {
-    font-size: 1.6rem; /* Aumenta um pouco o tamanho do texto */
+    font-size: 1.4rem; /* Aumenta um pouco o tamanho do texto */
     line-height: 1.8; /* Espaçamento maior entre as linhas */
     margin-bottom: 20px; /* Espaçamento inferior */
     color: #444;
