@@ -57,8 +57,46 @@ body {
     background-color: #333;
 }
 
-.image-placeholder {
+.image-placeholder img {
     margin: 20px 0;
-    font-size: 1.2rem;
-    color: #777;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.footer .terms {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.footer .links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer .links li {
+    margin: 5px 0;
+}
+
+.footer .links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer .links a:hover {
+    text-decoration: underline;
+}
+
+.pagina {
+    display: none;
+}
+
+.pagina.ativa {
+    display: block;
 }
