@@ -32,5 +32,13 @@
             window.location.href = "https://www.extrafarma.com.br";
         }
     </script>
+    <script>
+    // Previne o botão "voltar" do navegador
+    history.pushState(null, null, window.location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
+
 </body>
 </html>
