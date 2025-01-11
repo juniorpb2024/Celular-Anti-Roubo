@@ -31,7 +31,7 @@ body {
 }
 
 .header img.banner {
-    width: 100%;
+    width: 100%; /* Banner ajustado para ocupar toda a largura */
     border-radius: 15px;
 }
 
@@ -109,10 +109,11 @@ body {
 
 .image-container {
     margin: 20px 0;
+    width: 100%; /* Ajusta a largura da imagem ao container */
 }
 
 .image-container img.report-image {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
+    width: 100%; /* A imagem ocupa a mesma largura do banner */
+    max-width: 100%; /* Evita que ultrapasse os limites do container */
+    border-radius: 15px; /* Mesma borda arredondada do banner */
 }
