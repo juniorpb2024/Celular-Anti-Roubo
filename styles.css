@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px; /* Ajustado para mais espaço */
+    padding: 20px;
 }
 
 .container {
@@ -31,7 +31,7 @@ body {
 }
 
 .header img.banner {
-    width: 100%; /* Ajusta o banner para ocupar toda a largura */
+    width: 100%;
     border-radius: 15px;
 }
 
@@ -89,9 +89,9 @@ body {
 }
 
 .footer .links {
-    list-style-type: none; /* Remove os bullets */
-    padding: 0; /* Remove o espaçamento interno */
-    margin: 0; /* Remove o espaçamento externo */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer .links li {
@@ -108,30 +108,16 @@ body {
     text-decoration: underline;
 }
 
-.model-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 500px;
-    gap: 20px; /* Espaçamento entre os blocos */
-    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+.image-container {
+    margin: 20px 0;
+    width: 100%; /* Ajusta ao tamanho do container */
+    max-width: 500px; /* Máximo para manter proporção */
 }
 
-.model-block {
-    flex: 1 1 45%; /* Cada bloco ocupa até 45% da largura disponível */
-    text-align: center;
-    cursor: pointer;
-    max-width: 200px; /* Tamanho máximo para cada bloco */
-}
-
-.model-block img {
-    width: 100%; /* Ajusta a largura da imagem ao container */
-    height: auto;
-    border-radius: 10px;
-}
-
-.model-block p {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 10px;
+.image-container img.report-image {
+    width: 100%; /* Responsivo: ocupa toda a largura disponível */
+    height: auto; /* Mantém proporção */
+    border-radius: 10px; /* Deixa a imagem arredondada */
+    display: block; /* Remove espaçamento extra */
+    margin: 0 auto; /* Centraliza a imagem */
 }
