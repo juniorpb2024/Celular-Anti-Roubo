@@ -1,82 +1,69 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0054a6, #0098db);
-  color: #fff;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  justify-content: center;
 }
 
-.page {
+.pagina {
   display: none;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  text-align: center;
 }
 
-.page.active {
+.pagina.ativa {
   display: flex;
 }
 
-.banner img {
-  width: 90%;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.banner {
+  width: 100%;
+  height: 50px;
+  background-color: #ccc;
+  text-align: center;
 }
 
-#primeira-pagina input {
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  font-size: 1rem;
+.barra-progresso {
+  width: 80%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-#primeira-pagina input:focus {
-  outline: none;
-  border-color: #00ffcc;
-  box-shadow: 0 0 10px #00ffcc;
+.progresso {
+  height: 100%;
+  background: #76c7c0;
 }
 
-/* Barra de progresso */
-.progress-bar {
+.barra-carregamento {
   width: 80%;
   height: 20px;
-  background: #ddd;
+  background: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
-  margin: 20px 0;
-  position: relative;
 }
 
-.progress {
-  height: 100%;
+.progresso-carregamento {
   width: 0;
-  background: #00ff00;
-  transition: width 0.2s;
+  height: 100%;
+  background: #76c7c0;
+  animation: carregando 3s linear infinite;
 }
 
-/* Pessoas no site */
-.warning-green {
-  font-size: 1.2rem;
-  text-align: center;
-  color: #fff;
+@keyframes carregando {
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
-.warning-green span {
-  font-weight: bold;
-  animation: blink 1s infinite;
-  color: #00ffff;
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
-
-/* Animação de piscada */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
