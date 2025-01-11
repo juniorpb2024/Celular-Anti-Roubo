@@ -30,7 +30,7 @@ function renderNoticia() {
         </header>
         <main class="main-content">
             <div class="news-image">
-                <img src="placeholder.jpg" alt="Notícia sobre segurança" class="news-placeholder">
+                <img src="https://github.com/user-attachments/assets/5a30cd2a-fe95-460b-a0bf-b200958a0610" alt="Notícia sobre segurança" class="news-placeholder">
             </div>
             <button class="test-button" onclick="continuar()">Continuar</button>
         </main>
