@@ -1,9 +1,13 @@
-function iniciarTeste() {
-    // Redireciona para a próxima página
-    window.location.href = "next.html";
+// Função para alternar para a próxima página
+function mostrarProximaPagina() {
+    // Esconde a página inicial
+    document.getElementById('pagina-inicial').classList.remove('ativa');
+    // Mostra a próxima página
+    document.getElementById('proxima-pagina').classList.add('ativa');
 }
 
+// Função para continuar a partir da próxima página
 function continuar() {
     alert("Continuando para o próximo passo...");
-    // Adicione o comportamento necessário para a etapa seguinte
+    // Insira aqui a lógica adicional que desejar
 }
