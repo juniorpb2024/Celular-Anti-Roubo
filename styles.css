@@ -31,30 +31,104 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Banner da Página */
+/* Banner */
 .header img.banner {
     width: 100%;
     border-radius: 15px;
 }
 
-/* Título */
+/* Texto Geral */
 .main-content h1 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: #222;
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
 }
 
-/* Container de Perguntas */
+/* Texto da Página Inicial */
+.main-content .intro-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Botão Geral */
+.test-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.test-button:hover {
+    background-color: #333;
+}
+
+/* Página 2: Imagem */
+.image-container {
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.image-container img.report-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Página 3: Blocos de Seleção */
+.model-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.model-block {
+    flex: 1 1 45%;
+    text-align: center;
+    cursor: pointer;
+    max-width: 200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.model-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.model-block p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #222;
+}
+
+/* Página 4: Perguntas */
 .question-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaçamento entre os blocos */
+    gap: 15px;
     width: 100%;
 }
 
-/* Bloco de Pergunta */
 .question-block {
     display: flex;
     align-items: center;
@@ -74,7 +148,7 @@ body {
 .question-content {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaçamento entre o emoji e o texto */
+    gap: 10px;
 }
 
 .question-content .emoji {
@@ -85,4 +159,13 @@ body {
     font-size: 1.2rem;
     font-weight: bold;
     color: #333;
+}
+
+/* Pergunta adicional na Quarta Página */
+.question-title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #222;
+    text-align: center;
+    font-weight: bold;
 }
