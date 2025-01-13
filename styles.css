@@ -243,10 +243,12 @@ body {
     font-weight: bold;
 }
 
-/* Pagina 8:Estilo para os círculos */
+/* Pagina 8: Estilo para os círculos */
 .analysis-container {
     display: flex;
     justify-content: space-around;
+    align-items: center; /* Centraliza os círculos verticalmente */
+    gap: 20px; /* Adiciona espaço uniforme entre os círculos */
     margin: 20px 0;
 }
 
@@ -254,23 +256,25 @@ body {
     text-align: center;
     width: 80px;
     height: 80px;
-    border-radius: 50%;
-    background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.circle p:first-child {
-    font-size: 1.5rem;
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem; /* Aumenta a fonte para destacar */
     font-weight: bold;
-    color: #e63946;
+    color: #000; /* Cor preta para contraste */
 }
 
 .circle p.label {
-    font-size: 0.8rem;
+    margin-top: 10px; /* Espaço entre o círculo e o texto */
+    font-size: 0.9rem;
     font-weight: normal;
     color: #555;
 }
@@ -278,7 +282,7 @@ body {
 /* Estilo para o slider */
 .slider-container {
     text-align: center;
-    margin: 20px 0;
+    margin: 30px 0; /* Ajusta o espaçamento */
 }
 
 .slider-label {
@@ -292,15 +296,7 @@ body {
     height: 8px;
     background-color: #e0e0e0;
     border-radius: 4px;
-    margin: 10px 0;
-}
-
-.slider-track {
-    position: absolute;
-    width: 27%;
-    height: 100%;
-    background-color: #000;
-    border-radius: 4px;
+    margin: 15px 0;
 }
 
 .slider-thumb {
@@ -309,70 +305,42 @@ body {
     height: 20px;
     background-color: #000;
     border-radius: 50%;
-    top: -6px;
+    top: 50%; /* Centraliza na barra */
+    transform: translateY(-50%);
+    transition: left 0.5s ease; /* Animação de movimento */
 }
 
 .tooltip {
     position: absolute;
-    top: -30px;
-    left: 27%;
+    top: -40px; /* Espaço maior entre a tooltip e o ponto */
+    left: 0;
+    transform: translateX(-50%);
     background-color: #000;
     color: #fff;
-    padding: 5px;
+    padding: 5px 8px;
     font-size: 0.8rem;
     border-radius: 4px;
     white-space: nowrap;
-    transform: translateX(-50%);
+}
+
+.slider-extremes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 .slider-percent {
+    position: absolute;
+    top: 30px; /* Alinha o 27% abaixo da barra */
+    left: 0;
+    transform: translateX(-50%);
     font-weight: bold;
     color: #e63946;
 }
 
-/* Botão CTA */
-.cta-button {
-    display: block;
-    margin: 20px auto;
-    padding: 15px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #e63946;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #c62828;
-}
-
-/* Mensagem de segurança */
-.security-message {
-    text-align: center;
-    font-size: 1rem;
-    margin: 20px 0;
-}
-
-.highlight {
-    color: #e63946;
-    font-weight: bold;
-}
-/* Estilo para as barras circulares */
-.progress-ring {
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.progress-ring-circle {
-    width: 80px;
-    height: 80px;
-    transform: rotate(-90deg);
-}
-
+/* Remove sombras atrás das barras circulares */
 .circle-bg {
     fill: none;
     stroke: #e0e0e0;
@@ -383,7 +351,7 @@ body {
     fill: none;
     stroke-width: 8;
     stroke-dasharray: 0 226;
-    transition: stroke-dashoffset 1.5s ease;
+    transition: stroke-dashoffset 1.5s ease; /* Animação de carregamento */
 }
 
 .circle-progress.red {
@@ -392,107 +360,4 @@ body {
 
 .circle-progress.green {
     stroke: #00c853;
-}
-
-/* Ajuste do slider */
-.slider-container .slider {
-    position: relative;
-    width: 100%;
-    height: 8px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-
-.slider-thumb {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #000;
-    border-radius: 50%;
-    top: -12px;
-    transition: left 2s ease;
-}
-
-.slider-extremes {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-}
-
-.tooltip {
-    position: absolute;
-    top: -35px;
-    left: 0;
-    transform: translateX(-50%);
-    background-color: #000;
-    color: #fff;
-    padding: 5px;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    white-space: nowrap;
-}
-
-.slider-percent {
-    text-align: center;
-    font-weight: bold;
-    color: #e63946;
-}
-/* Ajuste para centralizar barras de análise */
-.progress-ring {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-}
-
-.percentage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000;
-}
-
-/* Ajustes na barra deslizante */
-.slider {
-    position: relative;
-    width: 100%;
-    height: 8px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-
-.slider-thumb {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #000;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: left 0.2s ease;
-}
-
-.tooltip {
-    position: absolute;
-    top: -30px;
-    left: 0;
-    transform: translateX(-50%);
-    background-color: #000;
-    color: #fff;
-    padding: 5px;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    white-space: nowrap;
-}
-
-.slider-percent {
-    text-align: center;
-    font-weight: bold;
-    color: #e63946;
-    margin-top: 10px;
 }
