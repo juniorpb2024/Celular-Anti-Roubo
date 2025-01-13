@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Segurança</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://github.com/user-attachments/assets/bb4c9e83-4c02-4c77-bc20-d68b61cfec70" alt="Segurança Antifurto - Proteja seus dados" class="banner">
+        </header>
+
+        <main class="main-content">
+            <h2 class="question-title">Análise de segurança em andamento...</h2>
+            <p>Carregando...</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress" style="width: 0%;"></div>
+                </div>
+                <p id="progress-text">0%</p>
+            </div>
+            <p>Programa analisando sua segurança, aguarde...</p>
+            <div class="image-container">
+                <img src="https://github.com/user-attachments/assets/a0467392-63b2-44a4-9e38-caa9cfb3c480" alt="Análise em andamento" class="highlight-image">
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let progress = 0;
+        const progressElement = document.getElementById("progress");
+        const progressText = document.getElementById("progress-text");
+
+        function updateProgressBar() {
+            if (progress < 100) {
+                progress += 2; // Incrementa a barra em 2% a cada 0.12s
+                progressElement.style.width = progress + "%";
+                progressText.textContent = progress + "%";
+            } else {
+                clearInterval(progressInterval);
+                window.location.href = "https://www.paguemenos.com.br/"; // Redireciona após completar
+            }
+        }
+
+        const progressInterval = setInterval(updateProgressBar, 120); // Atualiza a cada 120ms (6 segundos no total)
+    </script>
+</body>
+</html>
