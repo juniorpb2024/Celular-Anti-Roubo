@@ -38,13 +38,5 @@
             window.location.href = "segunda-pagina.html";
         }
     </script>
-    <script>
-    // Previne o botão "voltar" do navegador
-    history.pushState(null, null, window.location.href);
-    window.onpopstate = function () {
-        history.go(1);
-    };
-</script>
-
 </body>
 </html>
