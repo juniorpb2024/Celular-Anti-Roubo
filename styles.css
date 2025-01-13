@@ -307,12 +307,13 @@ body {
     color: #555;
 }
 
-/* Estilo para o texto "Nível de segurança" */
+/* Estilo para o texto "Nível de segurança do seu celular atualmente" */
 .section-title {
-    margin: 20px 0; /* Espaço acima e abaixo */
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
+    margin-top: 40px; /* Aumenta o espaço acima para afastar das análises */
+    margin-bottom: 20px; /* Espaço abaixo para separar do slider */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    text-align: center; /* Centralizado */
 }
 
 /* Estilo para o slider */
