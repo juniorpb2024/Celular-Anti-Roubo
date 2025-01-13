@@ -118,6 +118,15 @@ body {
     display: block;
     margin: 0 auto; /* Centraliza a imagem */
 }
+/* Página 2: Estilo para a Imagem da Reportagem */
+.report-image {
+    width: 100%; /* Garante que a imagem ocupe a largura total do container */
+    max-width: 100%; /* Evita que a imagem ultrapasse os limites do banner */
+    height: auto; /* Mantém a proporção original da imagem */
+    border-radius: 15px; /* Mesma borda arredondada do banner */
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
 
 /* Página 3: Blocos de Seleção */
 .model-container {
