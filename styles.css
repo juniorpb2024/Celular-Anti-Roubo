@@ -246,20 +246,49 @@ body {
 /* Pagina 8: Estilo para os círculos */
 .analysis-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; /* Distribui os círculos igualmente */
     align-items: center; /* Centraliza os círculos verticalmente */
-    gap: 20px; /* Adiciona espaço uniforme entre os círculos */
     margin: 20px 0;
 }
 
 .circle {
+    position: relative;
     text-align: center;
     width: 80px;
     height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+
+.progress-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.progress-ring-circle {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-dasharray: 0 226;
+    transition: stroke-dashoffset 1.5s ease; /* Animação suave */
+}
+
+.circle-progress.red {
+    stroke: #e63946; /* Cor vermelha */
+}
+
+.circle-progress.green {
+    stroke: #00c853; /* Cor verde */
 }
 
 .percentage {
@@ -267,22 +296,21 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.5rem; /* Aumenta a fonte para destacar */
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #000; /* Cor preta para contraste */
+    color: #000;
 }
 
 .circle p.label {
     margin-top: 10px; /* Espaço entre o círculo e o texto */
     font-size: 0.9rem;
-    font-weight: normal;
     color: #555;
 }
 
 /* Estilo para o slider */
 .slider-container {
     text-align: center;
-    margin: 30px 0; /* Ajusta o espaçamento */
+    margin: 20px 0;
 }
 
 .slider-label {
@@ -307,7 +335,7 @@ body {
     border-radius: 50%;
     top: 50%; /* Centraliza na barra */
     transform: translateY(-50%);
-    transition: left 0.5s ease; /* Animação de movimento */
+    transition: left 0.5s ease; /* Suaviza o movimento */
 }
 
 .tooltip {
@@ -333,31 +361,40 @@ body {
 
 .slider-percent {
     position: absolute;
-    top: 30px; /* Alinha o 27% abaixo da barra */
-    left: 0;
+    top: 30px; /* Ajusta para ficar abaixo do ponto */
+    left: 27%; /* Alinha com o ponto na barra */
     transform: translateX(-50%);
     font-weight: bold;
     color: #e63946;
 }
 
-/* Remove sombras atrás das barras circulares */
-.circle-bg {
-    fill: none;
-    stroke: #e0e0e0;
-    stroke-width: 8;
+/* Botão CTA */
+.cta-button {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.circle-progress {
-    fill: none;
-    stroke-width: 8;
-    stroke-dasharray: 0 226;
-    transition: stroke-dashoffset 1.5s ease; /* Animação de carregamento */
+.cta-button:hover {
+    background-color: #c62828;
 }
 
-.circle-progress.red {
-    stroke: #e63946;
+/* Mensagem de segurança */
+.security-message {
+    text-align: center;
+    font-size: 1rem;
+    margin: 20px 0;
 }
 
-.circle-progress.green {
-    stroke: #00c853;
+.highlight {
+    color: #e63946;
+    font-weight: bold;
 }
