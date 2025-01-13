@@ -88,3 +88,53 @@ body {
 .footer .links li a:hover {
     text-decoration: underline;
 }
+
+/* Página 2: Imagem */
+.image-container {
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.image-container img.report-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Página 3: Blocos de Seleção */
+.model-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.model-block {
+    flex: 1 1 45%;
+    text-align: center;
+    cursor: pointer;
+    max-width: 200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.model-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.model-block p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #222;
+}
