@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (position >= targetPosition) {
             clearInterval(interval);
             sliderPercent.style.opacity = "1"; // Mostra o 27% quando a barra para
+            sliderPercent.style.left = `${position}%`; // Alinha com o ponto
         } else {
             position++;
             sliderThumb.style.left = `${position}%`;
