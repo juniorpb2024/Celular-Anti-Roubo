@@ -89,21 +89,6 @@ body {
     text-decoration: underline;
 }
 
-/* Página 2: Imagem */
-.image-container {
-    margin: 20px 0;
-    width: 100%;
-    max-width: 500px;
-}
-
-.image-container img.report-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto;
-}
-
 /* Página 3: Blocos de Seleção */
 .model-container {
     display: flex;
@@ -124,6 +109,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
+    height: 250px; /* Altura fixa para garantir uniformidade */
 }
 
 .model-block img {
@@ -139,7 +125,52 @@ body {
     color: #222;
 }
 
-/* Ajuste para espaçamento extra entre imagens */
-.model-container .model-block:not(:last-child) {
-    margin-bottom: 20px;
+/* Setas dentro dos blocos */
+.model-block::after {
+    content: "→";
+    font-size: 1.5rem;
+    color: #333;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Página 4: Caixas de Perguntas */
+.question-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.question-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.question-block:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.question-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.question-content .emoji {
+    font-size: 1.5rem;
+}
+
+.question-content p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
 }
