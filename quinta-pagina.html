@@ -16,7 +16,7 @@
             <h2 class="question-title">Qual dessas configurações seu celular possui?</h2>
             <div class="question-container">
                 <!-- Opção 1 -->
-                <div class="question-block" onclick="responderSenhaPadrao()">
+                <div class="question-block" onclick="irParaSextaPagina()">
                     <div class="question-content">
                         <span class="emoji">🔒</span>
                         <p>Senha para acesso (padrão)</p>
@@ -24,7 +24,7 @@
                 </div>
 
                 <!-- Opção 2 -->
-                <div class="question-block" onclick="responderSimCard()">
+                <div class="question-block" onclick="irParaSextaPagina()">
                     <div class="question-content">
                         <span class="emoji">📱</span>
                         <p>Senha subscriber identity module (SIM)</p>
@@ -35,12 +35,8 @@
     </div>
 
     <script>
-        function responderSenhaPadrao() {
-            alert("Você escolheu: Senha para acesso (padrão)");
-        }
-
-        function responderSimCard() {
-            alert("Você escolheu: Senha SIM");
+        function irParaSextaPagina() {
+            window.location.href = "sexta-pagina.html";
         }
     </script>
 </body>
