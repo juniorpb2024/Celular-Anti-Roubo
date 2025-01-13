@@ -417,3 +417,14 @@ body {
     color: #e63946;
     font-weight: bold;
 }
+/* Estilo para o percentual (27%) abaixo do ponto */
+.slider-percent {
+    position: absolute;
+    top: 40px; /* Ajusta para ficar abaixo do ponto */
+    left: 0; /* Alinha com o ponto */
+    transform: translateX(-50%); /* Centraliza o texto com o ponto */
+    font-weight: bold;
+    color: #e63946; /* Cor vermelha */
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.5s ease; /* Animação de aparecimento */
+}
