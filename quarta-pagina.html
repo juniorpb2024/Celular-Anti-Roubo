@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Interativa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://github.com/user-attachments/assets/bb4c9e83-4c02-4c77-bc20-d68b61cfec70" alt="Segurança Antifurto - Proteja seus dados" class="banner">
+        </header>
+
+        <main class="main-content">
+            <h1>93% das pessoas relataram que sim...</h1>
+            <div class="question-container">
+                <!-- Bloco para "Sim" -->
+                <div class="question-block" onclick="responderSim()">
+                    <div class="question-content">
+                        <span class="emoji">👍</span> <!-- Substitua pelo emoji de sua preferência -->
+                        <p>Sim</p>
+                    </div>
+                </div>
+
+                <!-- Bloco para "Não" -->
+                <div class="question-block" onclick="responderNao()">
+                    <div class="question-content">
+                        <span class="emoji">😟</span> <!-- Substitua pelo emoji de sua preferência -->
+                        <p>Não</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function responderSim() {
+            alert("Você escolheu: Sim");
+            // Redirecione para outra página ou ação, se necessário
+        }
+
+        function responderNao() {
+            alert("Você escolheu: Não");
+            // Redirecione para outra página ou ação, se necessário
+        }
+    </script>
+</body>
+</html>
