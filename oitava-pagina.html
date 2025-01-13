@@ -63,9 +63,9 @@
                 </div>
                 <div class="slider-extremes">
                     <span>0%</span>
+                    <span id="slider-percent">27%</span>
                     <span>100%</span>
                 </div>
-                <p class="slider-percent" id="slider-percent">27%</p>
             </div>
 
             <p class="security-message">Seu celular está com somente <span class="highlight">27%</span> de segurança e o ideal é de <span class="highlight">97%</span></p>
@@ -110,7 +110,7 @@
                     position++;
                     sliderThumb.style.left = `${position}%`;
                     tooltip.style.left = `${position}%`;
-                    sliderPercent.textContent = `${position}%`;
+                    sliderPercent.style.left = `${position}%`;
                 }
             }, 20); // Atualiza a cada 20ms
         }
