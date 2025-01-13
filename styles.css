@@ -248,7 +248,7 @@ body {
     display: flex;
     justify-content: space-around; /* Distribui os círculos igualmente */
     align-items: center; /* Centraliza os círculos verticalmente */
-    margin: 20px 0;
+    margin: 20px 0 40px; /* Espaço maior abaixo */
 }
 
 .circle {
@@ -307,6 +307,14 @@ body {
     color: #555;
 }
 
+/* Estilo para o texto "Nível de segurança" */
+.section-title {
+    margin: 20px 0; /* Espaço acima e abaixo */
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
 /* Estilo para o slider */
 .slider-container {
     text-align: center;
@@ -338,6 +346,14 @@ body {
     transition: left 0.5s ease; /* Suaviza o movimento */
 }
 
+.slider-track {
+    position: absolute;
+    height: 100%;
+    background-color: #000;
+    border-radius: 4px;
+    transition: width 0.5s ease; /* Suaviza o movimento */
+}
+
 .tooltip {
     position: absolute;
     top: -40px; /* Espaço maior entre a tooltip e o ponto */
@@ -362,10 +378,12 @@ body {
 .slider-percent {
     position: absolute;
     top: 30px; /* Ajusta para ficar abaixo do ponto */
-    left: 27%; /* Alinha com o ponto na barra */
+    left: 0;
     transform: translateX(-50%);
     font-weight: bold;
-    color: #e63946;
+    color: #e63946; /* Cor vermelha */
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.5s ease; /* Animação de aparecimento */
 }
 
 /* Botão CTA */
