@@ -23,8 +23,8 @@
                             <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
                             <circle class="circle-progress red" cx="40" cy="40" r="36"></circle>
                         </svg>
+                        <p class="percentage">93%</p>
                     </div>
-                    <p class="percentage">93%</p>
                     <p class="label">Nível de Ameaça</p>
                 </div>
 
@@ -35,8 +35,8 @@
                             <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
                             <circle class="circle-progress red" cx="40" cy="40" r="36"></circle>
                         </svg>
+                        <p class="percentage">89%</p>
                     </div>
-                    <p class="percentage">89%</p>
                     <p class="label">Risco de Fraude</p>
                 </div>
 
@@ -47,8 +47,8 @@
                             <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
                             <circle class="circle-progress green" cx="40" cy="40" r="36"></circle>
                         </svg>
+                        <p class="percentage">73%</p>
                     </div>
-                    <p class="percentage">73%</p>
                     <p class="label">Nível de Proteção Necessária</p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
             <div class="slider-container">
                 <p class="slider-label">Nível</p>
                 <div class="slider">
-                    <span class="tooltip">Você está aqui</span>
+                    <span class="tooltip" id="tooltip">Você está aqui</span>
                     <div class="slider-track"></div>
                     <div class="slider-thumb" id="slider-thumb"></div>
                 </div>
@@ -65,7 +65,7 @@
                     <span>0%</span>
                     <span>100%</span>
                 </div>
-                <p class="slider-percent">27%</p>
+                <p class="slider-percent" id="slider-percent">27%</p>
             </div>
 
             <p class="security-message">Seu celular está com somente <span class="highlight">27%</span> de segurança e o ideal é de <span class="highlight">97%</span></p>
@@ -98,10 +98,21 @@
         // Animação da barra deslizante
         function animateSlider() {
             const sliderThumb = document.getElementById("slider-thumb");
-            sliderThumb.style.left = "0%";
-            setTimeout(() => {
-                sliderThumb.style.left = "27%";
-            }, 500);
+            const tooltip = document.getElementById("tooltip");
+            const sliderPercent = document.getElementById("slider-percent");
+
+            let position = 0;
+            const targetPosition = 27;
+            const interval = setInterval(() => {
+                if (position >= targetPosition) {
+                    clearInterval(interval);
+                } else {
+                    position++;
+                    sliderThumb.style.left = `${position}%`;
+                    tooltip.style.left = `${position}%`;
+                    sliderPercent.textContent = `${position}%`;
+                }
+            }, 20); // Atualiza a cada 20ms
         }
 
         document.addEventListener("DOMContentLoaded", () => {
