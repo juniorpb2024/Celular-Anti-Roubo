@@ -18,17 +18,37 @@
             <div class="analysis-container">
                 <!-- Nível de Ameaça -->
                 <div class="circle">
-                    <p>93%</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-circle">
+                            <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
+                            <circle class="circle-progress red" cx="40" cy="40" r="36"></circle>
+                        </svg>
+                    </div>
+                    <p class="percentage">93%</p>
                     <p class="label">Nível de Ameaça</p>
                 </div>
+
                 <!-- Risco de Fraude -->
                 <div class="circle">
-                    <p>89%</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-circle">
+                            <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
+                            <circle class="circle-progress red" cx="40" cy="40" r="36"></circle>
+                        </svg>
+                    </div>
+                    <p class="percentage">89%</p>
                     <p class="label">Risco de Fraude</p>
                 </div>
+
                 <!-- Nível de Proteção Necessária -->
                 <div class="circle">
-                    <p>73%</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-circle">
+                            <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
+                            <circle class="circle-progress green" cx="40" cy="40" r="36"></circle>
+                        </svg>
+                    </div>
+                    <p class="percentage">73%</p>
                     <p class="label">Nível de Proteção Necessária</p>
                 </div>
             </div>
@@ -39,7 +59,11 @@
                 <div class="slider">
                     <span class="tooltip">Você está aqui</span>
                     <div class="slider-track"></div>
-                    <div class="slider-thumb" style="left: 27%;"></div>
+                    <div class="slider-thumb" id="slider-thumb"></div>
+                </div>
+                <div class="slider-extremes">
+                    <span>0%</span>
+                    <span>100%</span>
                 </div>
                 <p class="slider-percent">27%</p>
             </div>
@@ -53,6 +77,37 @@
         function irParaQueroMeuCelularSeguro() {
             window.location.href = "https://www.paguemenos.com.br/"; // Redireciona para o link desejado
         }
+
+        // Animação das barras circulares
+        function animateCircularProgress() {
+            const circles = document.querySelectorAll(".circle-progress");
+            const percentages = [93, 89, 73];
+            circles.forEach((circle, index) => {
+                const radius = circle.r.baseVal.value;
+                const circumference = 2 * Math.PI * radius;
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                circle.style.strokeDashoffset = circumference;
+
+                const offset = circumference - (percentages[index] / 100) * circumference;
+                setTimeout(() => {
+                    circle.style.strokeDashoffset = offset;
+                }, 500); // Começa a animação após 0.5s
+            });
+        }
+
+        // Animação da barra deslizante
+        function animateSlider() {
+            const sliderThumb = document.getElementById("slider-thumb");
+            sliderThumb.style.left = "0%";
+            setTimeout(() => {
+                sliderThumb.style.left = "27%";
+            }, 500);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            animateCircularProgress();
+            animateSlider();
+        });
     </script>
 </body>
 </html>
