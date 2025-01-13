@@ -138,3 +138,8 @@ body {
     margin-top: 10px;
     color: #222;
 }
+
+/* Ajuste para espaçamento extra entre imagens */
+.model-container .model-block:not(:last-child) {
+    margin-bottom: 20px;
+}
