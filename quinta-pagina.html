@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações do Celular</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://github.com/user-attachments/assets/bb4c9e83-4c02-4c77-bc20-d68b61cfec70" alt="Segurança Antifurto - Proteja seus dados" class="banner">
+        </header>
+
+        <main class="main-content">
+            <h2 class="question-title">Qual dessas configurações seu celular possui?</h2>
+            <div class="question-container">
+                <!-- Opção 1 -->
+                <div class="question-block" onclick="responderSenhaPadrao()">
+                    <div class="question-content">
+                        <span class="emoji">🔒</span>
+                        <p>Senha para acesso (padrão)</p>
+                    </div>
+                </div>
+
+                <!-- Opção 2 -->
+                <div class="question-block" onclick="responderSimCard()">
+                    <div class="question-content">
+                        <span class="emoji">📱</span>
+                        <p>Senha subscriber identity module (SIM)</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function responderSenhaPadrao() {
+            alert("Você escolheu: Senha para acesso (padrão)");
+        }
+
+        function responderSimCard() {
+            alert("Você escolheu: Senha SIM");
+        }
+    </script>
+</body>
+</html>
