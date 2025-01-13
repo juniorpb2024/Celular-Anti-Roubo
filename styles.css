@@ -111,9 +111,9 @@ body {
 }
 
 .highlight-image {
-    width: 100%; /* A imagem ocupa toda a largura disponível */
-    max-width: 400px; /* Limita o tamanho máximo da imagem */
-    height: auto; /* Mantém a proporção da imagem */
+    width: 90%; /* Ajusta para alinhar com o banner */
+    max-width: 500px; /* Limita o tamanho máximo */
+    height: auto; /* Mantém a proporção */
     border-radius: 10px;
     display: block;
     margin: 0 auto; /* Centraliza a imagem */
