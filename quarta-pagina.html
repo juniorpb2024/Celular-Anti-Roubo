@@ -19,7 +19,7 @@
             <br>
             <div class="question-container">
                 <!-- Bloco para "Sim" -->
-                <div class="question-block" onclick="responderSim()">
+                <div class="question-block" onclick="irParaQuintaPagina()">
                     <div class="question-content">
                         <span class="emoji">👍</span>
                         <p>Sim</p>
@@ -27,7 +27,7 @@
                 </div>
 
                 <!-- Bloco para "Não" -->
-                <div class="question-block" onclick="responderNao()">
+                <div class="question-block" onclick="irParaQuintaPagina()">
                     <div class="question-content">
                         <span class="emoji">😟</span>
                         <p>Não</p>
@@ -38,12 +38,8 @@
     </div>
 
     <script>
-        function responderSim() {
-            alert("Você escolheu: Sim");
-        }
-
-        function responderNao() {
-            alert("Você escolheu: Não");
+        function irParaQuintaPagina() {
+            window.location.href = "quinta-pagina.html";
         }
     </script>
 </body>
