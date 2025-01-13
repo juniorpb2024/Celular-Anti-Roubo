@@ -360,3 +360,81 @@ body {
     color: #e63946;
     font-weight: bold;
 }
+/* Estilo para as barras circulares */
+.progress-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.progress-ring-circle {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-dasharray: 0 226;
+    transition: stroke-dashoffset 1.5s ease;
+}
+
+.circle-progress.red {
+    stroke: #e63946;
+}
+
+.circle-progress.green {
+    stroke: #00c853;
+}
+
+/* Ajuste do slider */
+.slider-container .slider {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.slider-thumb {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    top: -12px;
+    transition: left 2s ease;
+}
+
+.slider-extremes {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.tooltip {
+    position: absolute;
+    top: -35px;
+    left: 0;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.slider-percent {
+    text-align: center;
+    font-weight: bold;
+    color: #e63946;
+}
