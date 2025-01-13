@@ -89,6 +89,36 @@ body {
     text-decoration: underline;
 }
 
+/* Página 2: Bloco de Destaque */
+.highlight-container {
+    display: flex;
+    flex-direction: column; /* Mantém texto e imagem em coluna */
+    gap: 10px; /* Espaçamento entre texto e imagem */
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid red;
+    border-radius: 10px;
+    background-color: #fff;
+    align-items: center; /* Centraliza o conteúdo */
+}
+
+.highlight-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    text-align: left; /* Alinha o texto à esquerda */
+    width: 100%; /* Garante que o texto ocupe toda a largura do container */
+}
+
+.highlight-image {
+    width: 100%; /* A imagem ocupa toda a largura disponível */
+    max-width: 400px; /* Limita o tamanho máximo da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
 /* Página 3: Blocos de Seleção */
 .model-container {
     display: flex;
