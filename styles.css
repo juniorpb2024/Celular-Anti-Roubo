@@ -476,11 +476,11 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    writing-mode: horizontal-tb; /* Alinha o texto horizontalmente */
+    transform: translate(-50%, -50%) rotate(0); /* Remove rotação */
     font-size: 1.5rem;
     font-weight: bold;
     color: #000;
+    writing-mode: horizontal-tb; /* Força o texto horizontal */
 }
 
 .alert {
