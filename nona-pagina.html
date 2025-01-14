@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuração PRO</title>
-    <link rel="stylesheet" href="styles-nona-pagina.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -14,21 +14,28 @@
         </header>
 
         <main class="main-content">
-            <div class="analysis-section">
+            <div class="analysis-container">
+                <!-- Segurança Atual -->
                 <div class="circle">
-                    <svg class="progress-ring">
-                        <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
-                        <circle class="circle-progress red" cx="40" cy="40" r="36" style="stroke-dasharray: 226; stroke-dashoffset: 164;"></circle>
-                    </svg>
-                    <p class="percentage">27%</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-circle">
+                            <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
+                            <circle class="circle-progress red" cx="40" cy="40" r="36"></circle>
+                        </svg>
+                        <p class="percentage">27%</p>
+                    </div>
                     <p class="label">Segurança Atual</p>
                 </div>
+
+                <!-- Segurança Ideal -->
                 <div class="circle">
-                    <svg class="progress-ring">
-                        <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
-                        <circle class="circle-progress green" cx="40" cy="40" r="36" style="stroke-dasharray: 226; stroke-dashoffset: 0;"></circle>
-                    </svg>
-                    <p class="percentage">97%</p>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-circle">
+                            <circle class="circle-bg" cx="40" cy="40" r="36"></circle>
+                            <circle class="circle-progress green" cx="40" cy="40" r="36"></circle>
+                        </svg>
+                        <p class="percentage">97%</p>
+                    </div>
                     <p class="label">Segurança Ideal</p>
                 </div>
             </div>
@@ -46,7 +53,7 @@
                 </ul>
             </div>
 
-            <button class="cta-button">Sim, quero proteger meu celular agora!</button>
+            <button class="cta-button" onclick="redirecionarConfiguracao()">Sim, quero proteger meu celular agora!</button>
 
             <div class="pricing">
                 <h3>Quanto vale a sua privacidade?</h3>
@@ -59,8 +66,31 @@
                 <p class="info">Você receberá instruções claras e simples para ativar essa proteção sozinho, em menos de 5 minutos.</p>
             </div>
 
-            <button class="cta-button">Quero essa configuração!</button>
+            <button class="cta-button" onclick="redirecionarConfiguracao()">Quero essa configuração!</button>
         </main>
     </div>
+
+    <script>
+        function redirecionarConfiguracao() {
+            window.location.href = "configuracao-final.html";
+        }
+
+        // Animação das barras circulares
+        document.addEventListener("DOMContentLoaded", () => {
+            const circles = document.querySelectorAll(".circle-progress");
+            const percentages = [27, 97];
+            circles.forEach((circle, index) => {
+                const radius = circle.r.baseVal.value;
+                const circumference = 2 * Math.PI * radius;
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                circle.style.strokeDashoffset = circumference;
+
+                const offset = circumference - (percentages[index] / 100) * circumference;
+                setTimeout(() => {
+                    circle.style.strokeDashoffset = offset;
+                }, 500);
+            });
+        });
+    </script>
 </body>
 </html>
