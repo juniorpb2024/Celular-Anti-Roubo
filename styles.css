@@ -519,18 +519,26 @@ body {
 }
 
 /* Benefícios */
-.benefits h2 {
+.benefits-box {
+    background-color: #d5f5d5; /* Verde claro */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.benefits-box h2 {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.benefits ul {
+.benefits-box ul {
     list-style: disc;
     margin: 0;
-    padding: 0 40px;
+    padding: 0 20px;
 }
 
-.benefits ul li {
+.benefits-box ul li {
     margin-bottom: 10px;
     text-align: left;
 }
@@ -559,9 +567,9 @@ body {
     font-weight: bold;
 }
 
-.old-price {
+.old-price.gray {
     text-decoration: line-through;
-    color: #e63946;
+    color: gray; /* Cinza */
     font-weight: bold;
 }
 
@@ -579,7 +587,6 @@ body {
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: #e63946;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -587,15 +594,25 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.cta-button:hover {
-    background-color: #c62828;
-}
-
-/* Animação de piscar */
-.blinking {
+.cta-button.blinking {
+    background-color: #e63946;
     animation: blinking 1.5s infinite;
 }
 
+.cta-button.blinking:hover {
+    background-color: #c62828;
+}
+
+.cta-button.black {
+    background-color: #000;
+    animation: none; /* Remove piscar */
+}
+
+.cta-button.black:hover {
+    background-color: #333;
+}
+
+/* Animação de piscar */
 @keyframes blinking {
     0%, 100% {
         opacity: 1;
@@ -604,27 +621,3 @@ body {
         opacity: 0.5;
     }
 }
-
-/* Botão Preto Piscante */
-.black-blinking {
-    display: block;
-    width: 300px;
-    margin: 20px auto;
-    padding: 15px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    animation: blinking 1.5s infinite; /* Mesmo efeito do botão vermelho */
-}
-
-.black-blinking:hover {
-    background-color: #333;
-}
-
-
