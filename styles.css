@@ -604,3 +604,25 @@ body {
         opacity: 0.5;
     }
 }
+
+/* Botão Preto Piscante */
+.black-blinking {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    animation: blinking 1.5s infinite; /* Mesmo efeito do botão vermelho */
+}
+
+.black-blinking:hover {
+    background-color: #333;
+}
