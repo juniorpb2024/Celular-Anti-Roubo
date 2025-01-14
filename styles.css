@@ -413,6 +413,26 @@ body {
 }
 
 /* Nona Página: Estilo geral */
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Geral */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -422,11 +442,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
+/* Header */
 .header .banner {
     width: 100%;
     border-radius: 8px;
@@ -440,15 +456,22 @@ body {
 }
 
 .circle {
-    text-align: center;
     position: relative;
+    text-align: center;
+    width: 80px;
+    height: 80px;
 }
 
 .progress-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.progress-ring-circle {
     width: 80px;
     height: 80px;
     transform: rotate(-90deg);
-    position: relative;
 }
 
 .circle-bg {
@@ -473,38 +496,28 @@ body {
     stroke: #00c853;
 }
 
-.percentage-container {
+/* Ajuste do texto de porcentagem */
+.percentage {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.percentage {
     font-size: 1.5rem;
     font-weight: bold;
     color: #000;
-    margin: 0;
-}
-
-.alert {
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
     text-align: center;
-    font-weight: bold;
-    color: #e63946;
-    margin: 20px 0;
 }
 
-.info {
-    text-align: center;
-    margin-bottom: 20px;
+/* Label abaixo do círculo */
+.label {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-/* Benefícios da solução */
-.benefits {
-    margin: 20px 0;
-}
-
+/* Benefícios */
 .benefits h2 {
     text-align: center;
     margin-bottom: 10px;
@@ -521,7 +534,7 @@ body {
     text-align: left;
 }
 
-/* Botões de ação */
+/* Botão de Ação */
 .cta-button {
     display: block;
     margin: 20px auto;
@@ -541,7 +554,7 @@ body {
     background-color: #c62828;
 }
 
-/* Sessão de preços */
+/* Preços */
 .pricing {
     text-align: center;
     margin: 20px 0;
@@ -567,5 +580,6 @@ body {
     font-weight: bold;
     margin-top: 10px;
 }
+
 
 
