@@ -413,6 +413,15 @@ body {
 }
 
 /* Nona Página: Estilo geral */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .header {
     text-align: center;
     margin-bottom: 20px;
@@ -424,7 +433,7 @@ body {
 }
 
 /* Seção de análise com círculos */
-.analysis-section {
+.analysis-container {
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
@@ -551,4 +560,3 @@ body {
     font-weight: bold;
     margin-top: 10px;
 }
-
