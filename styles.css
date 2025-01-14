@@ -377,6 +377,37 @@ body {
     color: #555;
 }
 
+/* Destaque em verde */
+.highlight-green {
+    color: #00c853; /* Verde */
+    font-weight: bold;
+}
+
+/* Destaque em vermelho */
+.highlight {
+    color: #e63946; /* Vermelho */
+    font-weight: bold;
+}
+
+/* Botão CTA */
+.cta-button {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c62828;
+}
+
 /* Nona Página: Estilo geral */
 /* Reset básico */
 * {
