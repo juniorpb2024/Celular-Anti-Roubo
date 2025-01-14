@@ -448,6 +448,7 @@ body {
     width: 80px;
     height: 80px;
     transform: rotate(-90deg);
+    position: relative;
 }
 
 .circle-bg {
@@ -472,17 +473,19 @@ body {
     stroke: #00c853;
 }
 
-.percentage {
+.percentage-container {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Remove rotação */
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.percentage {
     font-size: 1.5rem;
     font-weight: bold;
     color: #000;
-    writing-mode: horizontal-tb; /* Garante texto horizontal */
-    text-align: center; /* Centraliza texto horizontalmente */
-    white-space: nowrap; /* Garante que o texto não quebre */
+    margin: 0;
 }
 
 .alert {
@@ -510,12 +513,12 @@ body {
 .benefits ul {
     list-style: disc;
     margin: 0;
-    padding: 0 40px; /* Alinha à esquerda */
+    padding: 0 40px;
 }
 
 .benefits ul li {
     margin-bottom: 10px;
-    text-align: left; /* Centraliza o texto à esquerda */
+    text-align: left;
 }
 
 /* Botões de ação */
@@ -564,4 +567,5 @@ body {
     font-weight: bold;
     margin-top: 10px;
 }
+
 
