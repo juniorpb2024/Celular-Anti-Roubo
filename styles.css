@@ -412,4 +412,143 @@ body {
     font-weight: bold;
 }
 
+/* Nona Página: Estilo geral */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header .highlight {
+    color: #e63946;
+    font-weight: bold;
+}
+
+/* Seção de análise com círculos */
+.analysis-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.circle {
+    text-align: center;
+    position: relative;
+}
+
+.progress-ring {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    transition: stroke-dashoffset 1.5s ease;
+}
+
+.circle-progress.red {
+    stroke: #e63946;
+}
+
+.circle-progress.green {
+    stroke: #00c853;
+}
+
+.percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.alert {
+    text-align: center;
+    font-weight: bold;
+    color: #e63946;
+    margin: 20px 0;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Benefícios da solução */
+.benefits {
+    margin: 20px 0;
+}
+
+.benefits h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.benefits ul {
+    list-style: disc;
+    margin: 0;
+    padding: 0 20px;
+}
+
+.benefits ul li {
+    margin-bottom: 10px;
+}
+
+/* Botões de ação */
+.cta-button {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c62828;
+}
+
+/* Sessão de preços */
+.pricing {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.price-box {
+    margin: 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.current-price {
+    color: #e63946;
+    font-size: 1.2rem;
+}
+
+.guarantee {
+    font-weight: bold;
+    margin-top: 10px;
+}
 
