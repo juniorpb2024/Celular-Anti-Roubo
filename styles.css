@@ -515,6 +515,7 @@ body {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
+    font-weight: bold; /* Adicionado: deixa o texto "Segurança Atual" e "Segurança Ideal" em negrito */
 }
 
 /* Benefícios */
@@ -534,9 +535,18 @@ body {
     text-align: left;
 }
 
+/* Texto em vermelho */
+.red-text {
+    color: #e63946;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
 /* Botão de Ação */
 .cta-button {
     display: block;
+    width: 300px; /* Ajustado para que os botões tenham o mesmo tamanho */
     margin: 20px auto;
     padding: 15px 25px;
     font-size: 1rem;
@@ -554,6 +564,20 @@ body {
     background-color: #c62828;
 }
 
+/* Animação de piscar lentamente */
+.blinking {
+    animation: blinking 1.5s infinite; /* Pisca a cada 1.5 segundos */
+}
+
+@keyframes blinking {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
 /* Preços */
 .pricing {
     text-align: center;
@@ -562,7 +586,7 @@ body {
 
 .price-box {
     margin: 10px 0;
-    font-size: 1rem;
+    font-size: 1.4rem; /* Aumentado para maior visibilidade */
     font-weight: bold;
 }
 
@@ -573,13 +597,14 @@ body {
 
 .current-price {
     color: #e63946;
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Aumentado para maior visibilidade */
 }
 
 .guarantee {
     font-weight: bold;
     margin-top: 10px;
 }
+
 
 
 
