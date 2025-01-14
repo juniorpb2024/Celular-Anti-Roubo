@@ -69,7 +69,6 @@
                 </div>
                 <div class="slider-extremes">
                     <span>0%</span>
-                    <span id="slider-percent">27%</span>
                     <span>100%</span>
                 </div>
             </div>
@@ -105,7 +104,6 @@
         function animateSlider() {
             const sliderThumb = document.getElementById("slider-thumb");
             const tooltip = document.getElementById("tooltip");
-            const sliderPercent = document.getElementById("slider-percent");
 
             let position = 0;
             const targetPosition = 27;
@@ -116,7 +114,6 @@
                     position++;
                     sliderThumb.style.left = `${position}%`;
                     tooltip.style.left = `${position}%`;
-                    sliderPercent.style.left = `${position}%`;
                 }
             }, 20); // Atualiza a cada 20ms
         }
