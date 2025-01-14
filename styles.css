@@ -368,48 +368,13 @@ body {
     white-space: nowrap;
 }
 
+/* Remove o percentual abaixo */
 .slider-extremes {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
-}
-
-/* Remove o percentual (27%) abaixo do ponto */
-.slider-percent {
-    display: none; /* Esconde o texto */
-}
-
-/* Botão CTA */
-.cta-button {
-    display: block;
-    margin: 20px auto;
-    padding: 15px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #e63946;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #c62828;
-}
-
-/* Mensagem de segurança */
-.security-message {
-    text-align: center;
-    font-size: 1rem;
-    margin: 20px 0;
-}
-
-.highlight {
-    color: #e63946;
-    font-weight: bold;
 }
 
 /* Nona Página: Estilo geral */
