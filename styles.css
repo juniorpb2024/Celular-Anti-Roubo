@@ -476,11 +476,13 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(0); /* Remove rotação */
+    transform: translate(-50%, -50%); /* Remove rotação */
     font-size: 1.5rem;
     font-weight: bold;
     color: #000;
-    writing-mode: horizontal-tb; /* Força o texto horizontal */
+    writing-mode: horizontal-tb; /* Garante texto horizontal */
+    text-align: center; /* Centraliza texto horizontalmente */
+    white-space: nowrap; /* Garante que o texto não quebre */
 }
 
 .alert {
