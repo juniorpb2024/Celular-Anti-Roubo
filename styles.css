@@ -427,9 +427,9 @@ body {
     margin-bottom: 20px;
 }
 
-.header .highlight {
-    color: #e63946;
-    font-weight: bold;
+.header .banner {
+    width: 100%;
+    border-radius: 8px;
 }
 
 /* Seção de análise com círculos */
@@ -507,11 +507,12 @@ body {
 .benefits ul {
     list-style: disc;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 40px; /* Alinha à esquerda */
 }
 
 .benefits ul li {
     margin-bottom: 10px;
+    text-align: left; /* Centraliza o texto à esquerda */
 }
 
 /* Botões de ação */
@@ -560,3 +561,4 @@ body {
     font-weight: bold;
     margin-top: 10px;
 }
+
