@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise do Dispositivo</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
 </head>
 <body>
     <div class="container">
@@ -64,7 +65,7 @@
                 <p class="slider-label">Nível</p>
                 <div class="slider">
                     <span class="tooltip" id="tooltip">Você está aqui</span>
-                    <div class="slider-track"></div>
+                    <div class="slider-track" id="slider-track"></div>
                     <div class="slider-thumb" id="slider-thumb"></div>
                 </div>
                 <div class="slider-extremes">
@@ -80,50 +81,6 @@
         </main>
     </div>
 
-    <script>
-        function irParaQueroMeuCelularSeguro() {
-            window.location.href = "nona-pagina.html"; // Redireciona para a nona página
-        }
-
-        // Animação das barras circulares
-        function animateCircularProgress() {
-            const circles = document.querySelectorAll(".circle-progress");
-            const percentages = [93, 89, 73];
-            circles.forEach((circle, index) => {
-                const radius = circle.r.baseVal.value;
-                const circumference = 2 * Math.PI * radius;
-                circle.style.strokeDasharray = `${circumference} ${circumference}`;
-                circle.style.strokeDashoffset = circumference;
-
-                const offset = circumference - (percentages[index] / 100) * circumference;
-                setTimeout(() => {
-                    circle.style.strokeDashoffset = offset;
-                }, 500); // Começa a animação após 0.5s
-            });
-        }
-
-        // Animação da barra deslizante
-        function animateSlider() {
-            const sliderThumb = document.getElementById("slider-thumb");
-            const tooltip = document.getElementById("tooltip");
-
-            let position = 0;
-            const targetPosition = 27;
-            const interval = setInterval(() => {
-                if (position >= targetPosition) {
-                    clearInterval(interval);
-                } else {
-                    position++;
-                    sliderThumb.style.left = `${position}%`;
-                    tooltip.style.left = `${position}%`;
-                }
-            }, 20); // Atualiza a cada 20ms
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            animateCircularProgress();
-            animateSlider();
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
