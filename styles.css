@@ -344,6 +344,7 @@ body {
     border-radius: 50%;
     top: 50%; /* Centraliza na barra */
     transform: translateY(-50%);
+    transition: left 0.5s ease; /* Suaviza o movimento */
 }
 
 .slider-track {
@@ -351,6 +352,7 @@ body {
     height: 100%;
     background-color: #000;
     border-radius: 4px;
+    transition: width 0.5s ease; /* Suaviza o movimento */
 }
 
 .tooltip {
